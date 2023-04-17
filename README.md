@@ -37,7 +37,7 @@ Certaines capacités sont spécifiques à une ou plusieurs classes
 
 ### Combat tour à tour :
 -	Choix d’actions (une action par tour) : attaquer, utiliser un objet, fuite
--	L’ennemi doit agir selon un algorithme :
+-	L’ennemi doit agir selon un algorithme
   - 70% de chance d’attaquer
   - 20% chance de soigner (à condition que ses PV soient bas par exemple)
   - 10% d’utiliser une ATQ spéciale
