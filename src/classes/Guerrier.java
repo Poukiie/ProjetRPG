@@ -1,7 +1,13 @@
 package classes;
 
-public class Guerrier extends Classe {
-    public Guerrier(int pv, int atq, int def, int energie) {
-        super(pv, atq, def, energie);
+import personnages.Heros;
+
+public class Guerrier extends Heros {
+    public Guerrier(String nom) {
+        super(nom,110, 90, 60, 20);
+    }
+
+    public void utiliserCapacite() {
+
     }
 }

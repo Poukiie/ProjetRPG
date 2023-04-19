@@ -1,18 +1,29 @@
 package personnages;
 
-import classes.Classe;
-import classes.Mage;
-import classes.Soigneur;
+public abstract class Heros extends Personnage {
 
-public class Heros extends Personnage {
-    private Classe classe; // (Tank, Mage, Guerrier, Soigneur etc.) (Enum ?)
-
-    public Heros(String nom, String classe) {
-        super(nom);
-        switch(classe) {
-            case "Soigneur": this.classe = new Soigneur(200, 20, 60, 50);
-            case "Mage": this.classe = new Mage(140, 60, 50, 70);
-        }
-
+    public Heros(String nom, int pv, int atq, int def, int energie) {
+        super(nom, pv, atq, def, energie);
     }
+
+    public void attaquer(Ennemi ennemi) {
+        int ennemiPV = ennemi.getPV();
+        if (ennemiPV > 0) {
+            if (ennemi.getDEF() > this.getATK()) {
+                System.out.println(this.getNom() + "n'inflige aucun dégât à " + ennemi.getNom()
+                        + " (" + (ennemiPV) + "PV)");
+            }
+            ennemiPV = ennemiPV - this.getATK() + ennemi.getDEF();
+            if (ennemiPV < 0) {
+                ennemiPV = 0;
+            }
+            System.out.println(this.getNom() + " inflige " + (this.getATK() - ennemi.getDEF()) + " dégâts à " + ennemi.getNom()
+                    + " (" + (ennemiPV) + "PV)");
+        }
+        else {
+            System.out.println("Arrête il est déjà mort, espèce de monstre...");
+        }
+    }
+
+    public abstract void utiliserCapacite(Personnage p);
 }

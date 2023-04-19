@@ -1,13 +1,16 @@
 package classes;
 
-public class Soigneur extends Classe {
+import personnages.Heros;
+import personnages.Personnage;
 
-    public Soigneur(int pv, int atq, int def, int energie) {
-        super(200, 20, 60, 50);
+public class Soigneur extends Heros {
+
+    public Soigneur(String nom) {
+        super(nom, 200, 20, 70, 60);
     }
 
     // soin
-    public void soigner() {
+    public void utiliserCapacite(Personnage p) {
         
     }
 }

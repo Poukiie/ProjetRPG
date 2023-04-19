@@ -1,7 +1,13 @@
 package classes;
 
-public class Tank extends Classe {
-    public Tank(int pv, int atq, int def, int energie) {
-        super(pv, atq, def, energie);
+import personnages.Heros;
+
+public class Tank extends Heros {
+    public Tank(String nom) {
+        super(nom, 220, 40, 100, 40);
+    }
+
+    public void utiliserCapacite() {
+
     }
 }

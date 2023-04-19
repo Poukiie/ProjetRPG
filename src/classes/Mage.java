@@ -1,14 +1,16 @@
 package classes;
 
-public class Mage extends Classe {
-    private int ptsMagie;
+import personnages.Heros;
 
-    public Mage(int pv, int atq, int def, int energie) {
-        super(140, 60, 50, 70);
-        this.ptsMagie = 60;
+public class Mage extends Heros {
+
+    public Mage(String nom) {
+        super(nom,140, 70, 50, 70);
     }
 
     // capacites
+    public void utiliserCapacite() {
 
+    }
 
 }
