@@ -40,8 +40,7 @@ public class Appli {
                     System.out.println("Vous avez créé " + Personnage.getCounter() + " personnages en tout.\n" + "--------");
 
                     for (Personnage p : personnages) {
-                        // TODO Une belle toString pour la classe
-                        System.out.println(p.getNom());
+                        System.out.println(p.getNom() + " - " + p.getClass().getSimpleName() + "\n--------");
                     }
                     break;
                 case "4":
@@ -91,6 +90,6 @@ public class Appli {
         }
 
         personnages.add(p);
-        System.out.println("Personnage créé : " + nom + " - " + classe);
+        System.out.println("Personnage créé : " + nom + " - " + classe + "\n--------");
     }
 }
