@@ -28,9 +28,7 @@ public class Appli {
         List<Personnage> ennemis = new ArrayList<>();
         ennemis.add(e1);
 
-        if (p1 instanceof Heros && e1 instanceof Ennemi) {
-            ((Heros)p1).attaquer((Ennemi)e1);
-        }
+        p1.attaquer(e1);
         e1.attaquer(p1);
         e1.attaquer(e2);
 

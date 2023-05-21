@@ -11,8 +11,6 @@ public class Personnage {
     private static int counter = 0;
     private static final ArrayList<Personnage> personnages = new ArrayList<>();
 
-    public Personnage() {}
-
     public Personnage(String nom, int pv, int atq, int def, int energie) {
         this.nom = nom;
         this.PV = pv;
@@ -50,16 +48,28 @@ public class Personnage {
         return personnages;
     }
 
+    public void setPV(int PV) {
+        this.PV = PV;
+    }
+
     public static void creerPersonnage(String nom, int pv, int atq, int def, int energie) {
         personnages.add(new Personnage(nom, pv, atq, def, energie));
     }
 
     public void attaquer(Personnage p) {
-        if (this instanceof Heros && p instanceof Ennemi) {
-            ((Heros)this).attaquer((Ennemi)p);
+        int valeurAttaque = this.ATK - p.getDEF();
+
+        if (valeurAttaque <= 0) {
+            System.out.println(this.nom + " n'inflige aucun dégât à " + p.getNom()
+                    + " (" + (p.getPV()) + "PV)");
         }
-        if (this instanceof Ennemi && p instanceof Heros) {
-            ((Ennemi)this).attaquer((Heros)p);
+
+        else {
+            int diff = p.getPV() - valeurAttaque;
+            int newPV = Math.max(diff, 0);
+            p.setPV(newPV);
+            System.out.println(this.nom + " inflige " + valeurAttaque + " dégâts à " + p.getNom()
+                    + " (" + (newPV) + "PV)");
         }
     }
 
