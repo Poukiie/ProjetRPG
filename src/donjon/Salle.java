@@ -1,4 +1,6 @@
-import personnages.Ennemi;
+package donjon;
+
+import personnages.ennemis.Ennemi;
 
 import java.util.List;
 

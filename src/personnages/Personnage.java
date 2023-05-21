@@ -3,24 +3,26 @@ package personnages;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Personnage {
+public abstract class Personnage {
     private String nom;
     private int PV;
+    private int PVMax;
     private int ATK;
-    private int DEF; // 5 de DEF, l’ennemi tape 12, je me prends 7 de DGT, différence
+    private int DEF;
     private int precision;
     private int esquive;
     private int energie; // pour utiliser des capacités
     private static int counter = 0;
     private static final ArrayList<Personnage> personnages = new ArrayList<>();
 
-    public Personnage(String nom, int pv, int atq, int def, int energie) {
+    public Personnage(String nom, int pv, int pvMax, int atq, int def, int precision, int esquive, int energie) {
         this.nom = nom;
         this.PV = pv;
+        this.PVMax = pvMax;
         this.ATK = atq;
         this.DEF = def;
-        this.precision = 70;
-        this.esquive = 30;
+        this.precision = precision;
+        this.esquive = esquive;
         this.energie = energie;
         Personnage.counter += 1;
     }
@@ -65,10 +67,6 @@ public class Personnage {
         this.PV = PV;
     }
 
-    public static void creerPersonnage(String nom, int pv, int atq, int def, int energie) {
-        personnages.add(new Personnage(nom, pv, atq, def, energie));
-    }
-
     private boolean roll(int stat) {
         return new Random().nextInt(100) + 1 <= stat;
     }
@@ -94,14 +92,5 @@ public class Personnage {
 
         System.out.println(this.nom + " n'inflige aucun dégât à " + p.getNom()
                 + " (" + (p.getPV()) + "PV)");
-    }
-
-    public void utiliserCapacite(Personnage p) {
-        if (this instanceof Heros && p instanceof Ennemi) {
-            ((Heros)this).utiliserCapacite((Ennemi)p);
-        }
-        if (this instanceof Ennemi && p instanceof Heros) {
-            ((Ennemi)this).utiliserCapacite((Heros)p);
-        }
     }
 }
