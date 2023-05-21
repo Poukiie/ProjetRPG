@@ -9,6 +9,6 @@ public class Boss extends Ennemi implements CapaciteSpeciale {
 
     @Override
     public void utiliserCapacite() {
-        
+
     }
 }
