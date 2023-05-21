@@ -8,8 +8,8 @@ public class Personnage {
     private int ATK;
     private int DEF; // 5 de DEF, l’ennemi tape 12, je me prends 7 de DGT, différence
     private int energie; // pour utiliser des capacités
-    public static int counter = 0;
-    public static ArrayList<Personnage> personnages = new ArrayList<>();
+    private static int counter = 0;
+    private static final ArrayList<Personnage> personnages = new ArrayList<>();
 
     public Personnage() {}
 
@@ -19,7 +19,7 @@ public class Personnage {
         this.ATK = atq;
         this.DEF = def;
         this.energie = energie;
-        this.counter += 1;
+        Personnage.counter += 1;
     }
 
     public String getNom() {
@@ -40,6 +40,14 @@ public class Personnage {
 
     public int getEnergie() {
         return energie;
+    }
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    public static ArrayList<Personnage> getPersonnages() {
+        return personnages;
     }
 
     public static void creerPersonnage(String nom, int pv, int atq, int def, int energie) {

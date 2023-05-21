@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f18eb56f-0857-4003-8b21-8d3368a269e7" name="Changes" comment="Init project">
-      <change afterPath="$PROJECT_DIR$/src/Consommable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Objet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/personnages/Blob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Appli.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Appli.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Donjon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Donjon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Salle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Salle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/capacites/Capacite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Classe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Classe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Guerrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Guerrier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Mage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Soigneur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Soigneur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Tank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/personnages/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/personnages/Ennemi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/Ennemi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/personnages/Heros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/Heros.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/personnages/Personnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/Personnage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,10 +28,18 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -53,13 +50,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Caillou/Documents/B3_DevData/ProjetRPG&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Caillou/Documents/B3_DevData/ProjetRPG",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Appli" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Appli" />
@@ -96,5 +94,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init project" />
     <option name="LAST_COMMIT_MESSAGE" value="Init project" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
