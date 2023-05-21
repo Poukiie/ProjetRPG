@@ -14,7 +14,7 @@ public class Appli {
 
         System.out.println(toStringMenu(sc, input));
         // System.out.println(checkInputMenu(sc, input));
-        while(!(input.equals("1") || input.equals("2")) || input.equals("3")) {
+        while(!(input.equals("1") || input.equals("2") || input.equals("3"))) {
             System.out.print("> ");
             input = sc.nextLine();
         }
@@ -23,18 +23,18 @@ public class Appli {
             // 1. Créer un personnage
             case "1":
                 creerPersonnage(sc);
-                System.out.print("Créer un autre personnage ?\n" + "> ");
+                System.out.print("Créer un autre personnage ? (oui/non)\n");
                 while(!(input.equals("oui") || input.equals("non"))) {
                     System.out.print("> ");
                     input = sc.nextLine();
                 }
-                if (input == "oui") {
+                if (input.equals("oui")) {
                     creerPersonnage(sc);
                 }
                 else {
                     System.out.println(toStringMenu(sc, input));
                     // System.out.println(checkInputMenu(sc, input));
-                    while(!(input.equals("1") || input.equals("2")) || input.equals("3")) {
+                    while(!(input.equals("1") || input.equals("2") || input.equals("3"))) {
                         System.out.print("> ");
                         input = sc.nextLine();
                     }
@@ -53,10 +53,6 @@ public class Appli {
 
                 System.out.println(toStringMenu(sc, input));
                 // System.out.println(checkInputMenu(sc, input));
-                while(!(input.equals("1") || input.equals("2")) || input.equals("3")) {
-                    System.out.print("> ");
-                    input = sc.nextLine();
-                }
                 break;
 
             // 3. Voir mes personnages
@@ -68,10 +64,6 @@ public class Appli {
                 }
                 System.out.println(toStringMenu(sc, input));
                 // System.out.println(checkInputMenu(sc, input));
-                while(!(input.equals("1") || input.equals("2")) || input.equals("3")) {
-                    System.out.print("> ");
-                    input = sc.nextLine();
-                }
                 break;
 
             default: throw new IllegalArgumentException();
@@ -118,7 +110,7 @@ public class Appli {
      * @return true si l'input est correct
      */
     private static boolean checkInputMenu(Scanner sc, String input) {
-        while(!(input.equals("1") || input.equals("2")) || input.equals("3")) {
+        while(!(input.equals("1") || input.equals("2") || input.equals("3"))) {
             System.out.print("> ");
             input = sc.nextLine();
         }
@@ -132,8 +124,8 @@ public class Appli {
         System.out.print("Choisissez une classe entre Guerrier, Mage, Tank, Soigneur, Voleur\n" + "> ");
         String classe = sc.nextLine();
 
-        while(!(classe.equals("Guerrier") || classe.equals("Mage")) || classe.equals("Tank") ||
-                classe.equals("Soigneur") || classe.equals("Voleur")) {
+        while(!(classe.equals("Guerrier") || classe.equals("Mage") || classe.equals("Tank") ||
+                classe.equals("Soigneur") || classe.equals("Voleur"))) {
             System.out.print("Veuillez rentrer un classe correcte :\n" + "> ");
             classe = sc.nextLine();
         }
