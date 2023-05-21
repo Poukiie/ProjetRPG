@@ -8,11 +8,12 @@ import java.util.Scanner;
 public class Appli {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String input = "";
+        String input;
         List<Personnage> personnages = new ArrayList<>();
         List<Personnage> ennemis = new ArrayList<>();
+        boolean continuerJeu = true;
 
-        while (true) {
+        while (continuerJeu) {
             showMenu();
             System.out.print("> ");
             input = sc.nextLine();
@@ -42,6 +43,8 @@ public class Appli {
                         System.out.println(Personnage.getPersonnages().get(i).getNom());
                     }
                     break;
+                case "4":
+                    continuerJeu = false;
             }
         }
     }
@@ -55,7 +58,8 @@ public class Appli {
                 "Saisissez un chiffre selon l'action souhaitée :\n";
         s += "1. Créer un personnage\n";
         s += "2. Jouer\n";
-        s += "3. Voir mes personnages";
+        s += "3. Voir mes personnages\n";
+        s += "4. Quitter";
         System.out.println(s);
     }
 
