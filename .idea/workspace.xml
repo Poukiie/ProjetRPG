@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f18eb56f-0857-4003-8b21-8d3368a269e7" name="Changes" comment="Init project">
+    <list default="true" id="f18eb56f-0857-4003-8b21-8d3368a269e7" name="Changes" comment="Refactor code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Appli.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Appli.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Guerrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Guerrier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Mage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Tank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/personnages/Personnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/Personnage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,12 +84,31 @@
       <option name="project" value="LOCAL" />
       <updated>1681721613586</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Refactor code">
+      <created>1684657787592</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684657787592</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init project" />
+    <MESSAGE value="Refactor code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
