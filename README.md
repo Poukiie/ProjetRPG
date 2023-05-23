@@ -22,7 +22,7 @@
 #### Classe : influence les caractéristiques de base
 -	Healer : + de PV | Capacité de soin (choix d'UN perso à heal, restaure selon 20% des PV max du healer)
 -	Tank : + de DEF et de PV | Capacité bouclier (=> esquive de chacun = 100 pendant 1 tour?)
--	Voleur : + d’esquive et de précision, - d'ATQ | Capacité 
+-	Voleur : + d’esquive et de précision, - d'ATQ | Capacité voler des PV à un ennemi
 -	Mage : + d'ATQ (moins que guerrier), + d’énergie | Capacité peut attaquer deux ennemis à la fois (choix des deux ennemis)
 - Guerrier : + d'ATQ et de précision, - d'esquive, de PV et de DEF | Capacité attaquer deux fois de suite (double valeurAttaque?)
 
