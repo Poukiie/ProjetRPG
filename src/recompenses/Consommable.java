@@ -1,9 +1,8 @@
 package recompenses;
 
-public class Consommable {
-    private String nom;
+public class Consommable extends Objet {
 
     public Consommable(String nom) {
-        this.nom = nom;
+        super(nom);
     }
 }

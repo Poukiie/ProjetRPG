@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f18eb56f-0857-4003-8b21-8d3368a269e7" name="Changes" comment="Init project">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recompenses/Equipement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Appli.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Appli.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/donjon/Donjon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/donjon/Donjon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/donjon/Salle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/donjon/Salle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/CapaciteSpeciale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/CapaciteSpeciale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/Personnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/Personnage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/ennemis/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/ennemis/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Guerrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Guerrier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Heros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Heros.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Mage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Soigneur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Soigneur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Tank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Voleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Voleur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recompenses/Consommable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/recompenses/Consommable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -37,7 +49,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -59,7 +71,7 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -163,6 +175,27 @@
     <MESSAGE value="Refactor main loop" />
     <MESSAGE value="Add option to leave game" />
     <option name="LAST_COMMIT_MESSAGE" value="Add option to leave game" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Appli.java</url>
+          <line>153</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Appli.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="personnages" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,5 +1,5 @@
 package personnages;
 
-public interface CapaciteSpeciale {
-    void utiliserCapacite();
+public interface CapaciteSpeciale<T> {
+    void utiliserCapacite(T personnage);
 }

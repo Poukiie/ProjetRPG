@@ -3,7 +3,7 @@ package personnages;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Personnage {
+public class Personnage {
     private String nom;
     private int PV;
     private int PVMax;
@@ -35,24 +35,52 @@ public abstract class Personnage {
         return PV;
     }
 
+    public void setPV(int PV) {
+        this.PV = PV;
+    }
+
+    public int getPVMax() {
+        return PVMax;
+    }
+
     public int getATK() {
         return ATK;
+    }
+
+    public void setATK(int ATK) {
+        this.ATK = ATK;
     }
 
     public int getDEF() {
         return DEF;
     }
 
+    public void setDEF(int DEF) {
+        this.DEF = DEF;
+    }
+
     public int getPrecision() {
         return precision;
+    }
+
+    public void setPrecision(int precision) {
+        this.precision = precision;
     }
 
     public int getEsquive() {
         return esquive;
     }
 
+    public void setEsquive(int esquive) {
+        this.esquive = esquive;
+    }
+
     public int getEnergie() {
         return energie;
+    }
+
+    public void setEnergie(int energie) {
+        this.energie = energie;
     }
 
     public static int getCounter() {
@@ -61,10 +89,6 @@ public abstract class Personnage {
 
     public static ArrayList<Personnage> getPersonnages() {
         return personnages;
-    }
-
-    public void setPV(int PV) {
-        this.PV = PV;
     }
 
     private boolean roll(int stat) {
