@@ -19,11 +19,12 @@ public class Partie {
     public Partie(List<Personnage> allies, Donjon donjon) {
         this.allies = allies;
         this.salles = donjon.getSalles();
+        this.salleActuelle = 0;
         this.ennemis = salles.get(salleActuelle).getEnnemis();
     }
 
     public void lancerDonjon() {
-        while (salleActuelle != 3 && !salles.get(salleActuelle).isCompleted()) {
+        while (salleActuelle < 3 && !salles.get(salleActuelle).isCompleted()) {
             System.out.println("-------- Salle " + salleActuelle + 1 + " --------");
             while (!salles.get(salleActuelle).isCompleted()) {
                 // Tant que l'équipe n'est pas morte
