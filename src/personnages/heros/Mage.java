@@ -26,4 +26,9 @@ public class Mage extends Heros<Ennemis> implements CapaciteSpeciale<Ennemis> {
             e.setPV(e.getPV() - valeurAttaque);
         }
     }
+
+    @Override
+    public boolean isMultiTarget() {
+        return true;
+    }
 }

@@ -20,4 +20,9 @@ public class Voleur extends Heros<Ennemi> implements CapaciteSpeciale<Ennemi> {
         p.setPV(p.getPV() - pvVoles);
         this.setPV(this.getPV() + pvVoles);
     }
+
+    @Override
+    public boolean isMultiTarget() {
+        return false;
+    }
 }

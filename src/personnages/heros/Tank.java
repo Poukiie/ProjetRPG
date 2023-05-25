@@ -27,4 +27,9 @@ public class Tank extends Heros<List<Personnage>> implements CapaciteSpeciale<Li
 
         // TODO: gérer le tour suivant pour remettre l'esquive à la normale
     }
+
+    @Override
+    public boolean isMultiTarget() {
+        return true;
+    }
 }

@@ -20,4 +20,9 @@ public class Soigneur extends Heros<Personnage> implements CapaciteSpeciale<Pers
         int pvRestaures = (int) (p.getPVMax() * 0.2);
         p.setPV(p.getPV() + pvRestaures);
     }
+
+    @Override
+    public boolean isMultiTarget() {
+        return false;
+    }
 }

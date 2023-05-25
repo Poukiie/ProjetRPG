@@ -12,4 +12,9 @@ public class Boss extends Ennemi implements CapaciteSpeciale<Personnage> {
     public void utiliserCapacite(Personnage p) {
 
     }
+
+    @Override
+    public boolean isMultiTarget() {
+        return false;
+    }
 }

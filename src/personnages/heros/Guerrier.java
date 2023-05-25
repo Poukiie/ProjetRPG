@@ -19,4 +19,9 @@ public class Guerrier extends Heros<Ennemi> implements CapaciteSpeciale<Ennemi> 
         this.attaquer(p);
         this.attaquer(p);
     }
+
+    @Override
+    public boolean isMultiTarget() {
+        return false;
+    }
 }
