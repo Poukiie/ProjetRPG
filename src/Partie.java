@@ -51,8 +51,8 @@ public class Partie {
                                     System.out.println(ennemis);
 
                                     // TODO vérifier saisie
-                                    int ennemiCible = Integer.parseInt(sc.nextLine());
-                                    personnage.attaquer(ennemis.get(ennemiCible - 1));
+                                    int ennemiCible = Integer.parseInt(sc.nextLine()) -1;
+                                    personnage.attaquer(ennemis.get(ennemiCible));
 
                                     // Si l'ennemi est mort, le supprimer de la liste
                                     if (ennemis.get(ennemiCible).getPV() <= 0) {
