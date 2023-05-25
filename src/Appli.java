@@ -12,7 +12,6 @@ public class Appli {
         String input;
         List<Personnage> personnages = Personnage.getPersonnages();
         List<Personnage> allies = new ArrayList<>();
-        List<Donjon> donjons = Donjon.getDonjons();
         boolean continuerJeu = true;
 
         // Afficher le menu en boucle tant que le joueur ne quitte pas
@@ -35,7 +34,7 @@ public class Appli {
                         break;
                     }
                     // Afficher le menu de choix du donjon
-                    Donjon donjonChoisi = showDonjons(donjons, sc);
+                    Donjon donjonChoisi = showDonjons(sc);
                     // Choix de l'équipe de 3 personnages pour le donjon
                     choisirEquipe(personnages, allies, sc);
                     // Lancer la partie
@@ -113,13 +112,10 @@ public class Appli {
     /**
      * Affiche le menu pour choisir le donjon
      */
-    private static Donjon showDonjons(List<Donjon> donjons, Scanner sc) {
+    private static Donjon showDonjons(Scanner sc) {
         Donjon d1 = new Donjon("Le donjon facile");
         Donjon d2 = new Donjon("Le second donjon");
         Donjon d3 = new Donjon("Le donjon final");
-        donjons.add(d1);
-        donjons.add(d2);
-        donjons.add(d3);
 
         String listeDonjons = "Choisissez un donjon :\n"
                 + "1. " + d1.getNomDonjon() + "\n"

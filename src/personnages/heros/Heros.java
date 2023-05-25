@@ -2,6 +2,7 @@ package personnages.heros;
 
 import personnages.CapaciteSpeciale;
 import personnages.Personnage;
+import personnages.ennemis.Ennemi;
 import recompenses.Consommable;
 
 public abstract class Heros<T> extends Personnage implements CapaciteSpeciale<T> {

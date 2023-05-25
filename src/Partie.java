@@ -47,13 +47,10 @@ public class Partie {
                                 System.out.println();
 
                                 int choice = Integer.parseInt(sc.nextLine());
+                                int ennemiCible;
                                 switch (choice) {
                                     case 1:
-                                        System.out.println("Quel ennemi souhaitez-vous attaquer ?");
-                                        System.out.println(ennemis);
-
-                                        // TODO vérifier saisie
-                                        int ennemiCible = Integer.parseInt(sc.nextLine()) -1;
+                                        ennemiCible = demanderCible();
                                         personnage.attaquer(ennemis.get(ennemiCible));
 
                                         // Si l'ennemi est mort, le supprimer de la liste
@@ -63,6 +60,7 @@ public class Partie {
                                         break;
 
                                     case 2:
+                                        ennemiCible = demanderCible();
 
                                 }
                             }
@@ -84,5 +82,12 @@ public class Partie {
             }
             salleActuelle++;
         }
+    }
+
+    private int demanderCible() {
+        System.out.println("Quel ennemi souhaitez-vous attaquer ?");
+        System.out.println(ennemis);
+        // TODO vérifier saisie
+        return Integer.parseInt(sc.nextLine()) -1;
     }
 }

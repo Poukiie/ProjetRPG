@@ -1,10 +1,11 @@
 package personnages.heros;
 
+import personnages.CapaciteSpeciale;
 import personnages.Personnage;
 
 import java.util.List;
 
-public class Tank extends Heros<List<Personnage>> {
+public class Tank extends Heros<List<Personnage>> implements CapaciteSpeciale<List<Personnage>> {
     public Tank(String nom) {
         super(nom, 185, 185, 45, 100, 40, 50, 45);
     }

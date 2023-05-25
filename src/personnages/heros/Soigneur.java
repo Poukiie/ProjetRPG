@@ -1,8 +1,9 @@
 package personnages.heros;
 
+import personnages.CapaciteSpeciale;
 import personnages.Personnage;
 
-public class Soigneur extends Heros<Personnage> {
+public class Soigneur extends Heros<Personnage> implements CapaciteSpeciale<Personnage> {
 
     public Soigneur(String nom) {
         super(nom, 150, 150, 25, 60, 60, 50, 60);

@@ -1,8 +1,9 @@
 package personnages.heros;
 
+import personnages.CapaciteSpeciale;
 import personnages.ennemis.Ennemi;
 
-public class Voleur extends Heros<Ennemi> {
+public class Voleur extends Heros<Ennemi> implements CapaciteSpeciale<Ennemi> {
     public Voleur(String nom) {
         super(nom, 125,	125, 30,	60,	70, 90, 55);
     }
