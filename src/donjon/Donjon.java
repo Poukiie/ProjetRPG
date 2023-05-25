@@ -6,7 +6,7 @@ import java.util.List;
 public class Donjon {
     private final String nomDonjon;
     private boolean isCompleted;
-    private List<Salle> salles;
+    private List<Salle> salles = new ArrayList<>();
     private static final ArrayList<Donjon> donjons = new ArrayList<>();
 
     public Donjon(String nomDonjon) {
@@ -15,7 +15,7 @@ public class Donjon {
 
         // Créer trois salles
         Salle salle;
-        for (int i = 1; i >= 3; i++) {
+        for (int i = 1; i <= 3; i++) {
             salle = new Salle(i);
             this.salles.add(salle);
         }

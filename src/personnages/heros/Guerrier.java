@@ -15,6 +15,7 @@ public class Guerrier extends Heros<Ennemi> {
             return;
         }
         this.setEnergie(this.getEnergie() - 10);
-        // TODO: code de la capacité spéciale
+        this.attaquer(p);
+        this.attaquer(p);
     }
 }

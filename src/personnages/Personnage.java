@@ -96,6 +96,7 @@ public class Personnage {
     }
 
     public void attaquer(Personnage p) {
+        // TODO: condition si ATK < DEF ou ATK = DEF, on attaque de 1
         int valeurAttaque = this.ATK - p.getDEF();
         if (valeurAttaque > 0) {
             // Check précision

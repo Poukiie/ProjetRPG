@@ -43,10 +43,10 @@
 ### Combat tour à tour :
 -	Choix d’actions (une action par tour) : attaquer, utiliser une capacité, utiliser un objet
 -	Valeur d'une ATQ : La différence entre notre ATQ et la DEF de l'adversaire
--	L’ennemi doit agir selon un algorithme
+-	L’ennemi doit agir selon un algorithme :
   - 70% de chance d’attaquer (héros random)
-  - 20% chance de se soigner (à condition que ses PV soient à moins de 25% de ses PV max)
-  - 10% d’utiliser une ATQ spéciale (attaquer deux fois de suite un héros ou deux héros en même temps)
+   - 20% chance de se soigner (à condition que ses PV soient à moins de 25% de ses PV max)
+   - 10% d’utiliser une ATQ spéciale (attaquer deux fois de suite un héros ou deux héros en même temps)
 -	Ennemis vaincus ou personnages vaincus
 
 Donjon fini : retour à la map et choix d’un donjon (marqué ceux qui ont été complétés)

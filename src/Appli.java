@@ -35,11 +35,12 @@ public class Appli {
                         break;
                     }
                     // Afficher le menu de choix du donjon
-                    showDonjons(donjons, sc);
+                    Donjon donjonChoisi = showDonjons(donjons, sc);
                     // Choix de l'équipe de 3 personnages pour le donjon
                     choisirEquipe(personnages, allies, sc);
-                    // TODO: Lancer le donjon
-                    // lancerDonjon(allies, donjons, sc);
+                    // Lancer la partie
+                    Partie partie = new Partie(allies, donjonChoisi);
+                    partie.lancerDonjon();
                     break;
 
                 // 3. Voir mes personnages (compteur, nom - classe)
@@ -102,17 +103,24 @@ public class Appli {
         }
 
         personnages.add(p);
-        System.out.println("Personnage créé : " + nom + " - " + p.getClass().getSimpleName() + "\n--------");
+        System.out.println("Personnage créé : " + nom + " - " + p.getClass().getSimpleName() + "\n" +
+                "PV: " + p.getPV() + "\n" + "Energie: " + p.getEnergie() + "\n" + "ATK: " + p.getATK() + "\n"
+                + "DEF: " + p.getDEF() + "\n" + "Précision: " + p.getPrecision() + "\n"
+                + "Esquive: " + p.getEsquive() + "\n--------"
+        );
     }
 
     /**
      * Affiche le menu pour choisir le donjon
      */
-    private static void showDonjons(List<Donjon> donjons, Scanner sc) {
+    private static Donjon showDonjons(List<Donjon> donjons, Scanner sc) {
         Donjon d1 = new Donjon("Le donjon facile");
         Donjon d2 = new Donjon("Le second donjon");
         Donjon d3 = new Donjon("Le donjon final");
         donjons.add(d1);
+        donjons.add(d2);
+        donjons.add(d3);
+
         String listeDonjons = "Choisissez un donjon :\n"
                 + "1. " + d1.getNomDonjon() + "\n"
                 + "2. " + d2.getNomDonjon() + "\n"
@@ -126,6 +134,14 @@ public class Appli {
             donjonChoisi = sc.nextLine();
         }
 
+        // stocker le donjon choisi dans une variable
+        Donjon donjon = null;
+        switch(donjonChoisi) {
+            case "1": donjon = d1; break;
+            case "2": donjon = d2; break;
+            case "3": donjon = d3; break;
+        }
+        return donjon;
     }
 
     /**
@@ -156,14 +172,21 @@ public class Appli {
                 System.out.println("Veuillez entrer un indice valide :\n" + "> ");
                 indice = sc.nextInt();
             }
-            // On affiche à partir d'1 mais le perso est en fait à l'indice i - 1
+            // On affiche à partir de 1 mais le perso est en fait à l'indice i - 1
             Personnage personnageChoisi = personnages.get(indice - 1);
             allies.add(personnageChoisi);
             System.out.println(personnageChoisi.getNom() + " a rejoint votre équipe !");
         }
-        System.out.println("> Votre équipe est prête ! Lancement du donjon........");
+        System.out.println(">>> Votre équipe est prête ! Lancement du donjon........");
+        // ajouter un point dans l'affichage toutes les 1 secondes
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        // clear console
+
+        // "Clear" console
         for (int i = 0; i < 30; ++i) System.out.println();
     }
 }
