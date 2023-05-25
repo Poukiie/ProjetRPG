@@ -49,18 +49,19 @@ public class Partie {
                                 case 1:
                                     System.out.println("Quel ennemi souhaitez-vous attaquer ?");
                                     System.out.println(ennemis);
+
+                                    // TODO vérifier saisie
+                                    int ennemiCible = Integer.parseInt(sc.nextLine());
+                                    personnage.attaquer(ennemis.get(ennemiCible - 1));
+
+                                    // Si l'ennemi est mort, le supprimer de la liste
+                                    if (ennemis.get(ennemiCible).getPV() <= 0) {
+                                        ennemis.remove(ennemiCible);
+                                    }
                                     break;
-                            }
 
-                            System.exit(0);
+                                case 2:
 
-                            // Attaquer un ennemi au choix
-                            int ennemiCible = (int) (Math.random() * ennemis.size());
-                            personnage.attaquer(ennemis.get(ennemiCible));
-
-                            // Si l'ennemi est mort, le supprimer de la liste
-                            if (ennemis.get(ennemiCible).getPV() <= 0) {
-                                ennemis.remove(ennemiCible);
                             }
                         }
                     }
