@@ -5,17 +5,12 @@ import personnages.ennemis.Boss;
 import personnages.ennemis.Ennemi;
 import personnages.ennemis.Ennemis;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Salle {
     private int numSalle;
     private Ennemis ennemis = new Ennemis();
-    private boolean isCompleted;
 
     public Salle(int numSalle) {
         this.numSalle = numSalle;
-        this.isCompleted = false;
         // Créer une liste de blobs random, entre 4 et 5 blobs
         Ennemi ennemi;
         if (numSalle != 3) {
@@ -36,7 +31,9 @@ public class Salle {
         return numSalle;
     }
 
-    public boolean isCompleted() { return isCompleted; }
+    public boolean isCompleted() {
+        return ennemis.size() == 0;
+    }
 
     public Ennemis getEnnemis() {
         return ennemis;
