@@ -9,12 +9,11 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Partie {
-    private List<Personnage> allies;
+    private final List<Personnage> allies;
     private int salleActuelle;
-    private List<Personnage> personnagesMorts;
-    private List<Salle> salles;
-    private Ennemis ennemis;
-    private Scanner sc = new Scanner(System.in);
+    private final List<Salle> salles;
+    private final Ennemis ennemis;
+    private final Scanner sc = new Scanner(System.in);
 
     public Partie(List<Personnage> allies, Donjon donjon) {
         this.allies = allies;
@@ -74,7 +73,6 @@ public class Partie {
                             ennemi.attaquer(allies.get(personnageCible));
                             // Si le personnage est mort, le supprimer de la liste
                             if (allies.get(personnageCible).getPV() <= 0) {
-                                personnagesMorts.add(allies.get(personnageCible));
                                 allies.remove(personnageCible);
                             }
                         }
