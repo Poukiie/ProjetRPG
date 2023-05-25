@@ -2,16 +2,18 @@ import donjon.Donjon;
 import donjon.Salle;
 import personnages.Personnage;
 import personnages.ennemis.Ennemi;
+import personnages.ennemis.Ennemis;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Partie {
     private List<Personnage> allies;
     private int salleActuelle;
     private List<Personnage> personnagesMorts;
     private List<Salle> salles;
-    private List<Ennemi> ennemis;
+    private Ennemis ennemis;
     private Scanner sc = new Scanner(System.in);
 
     public Partie(List<Personnage> allies, Donjon donjon) {
@@ -40,27 +42,38 @@ public class Partie {
                             System.out.println("1. Attaquer un ennemi");
                             System.out.println("2. Utiliser sa capacité spéciale");
                             System.out.println("3. Utiliser un objet");
+                            System.out.println();
+
+                            int choice = Integer.parseInt(sc.nextLine());
+                            switch (choice) {
+                                case 1:
+                                    System.out.println("Quel ennemi souhaitez-vous attaquer ?");
+                                    System.out.println(ennemis);
+                                    break;
+                            }
+
+                            System.exit(0);
+
                             // Attaquer un ennemi au choix
                             int ennemiCible = (int) (Math.random() * ennemis.size());
                             personnage.attaquer(ennemis.get(ennemiCible));
+
                             // Si l'ennemi est mort, le supprimer de la liste
                             if (ennemis.get(ennemiCible).getPV() <= 0) {
                                 ennemis.remove(ennemiCible);
                             }
                         }
                     }
+
                     // Les ennemis attaquent
                     for (Ennemi ennemi : ennemis) {
-                        // Si l'ennemi est mort, il ne peut pas attaquer
-                        if (ennemi.getPV() > 0) {
-                            // Attaquer un personnage aléatoire
-                            int personnageCible = (int) (Math.random() * allies.size());
-                            ennemi.attaquer(allies.get(personnageCible));
-                            // Si le personnage est mort, le supprimer de la liste
-                            if (allies.get(personnageCible).getPV() <= 0) {
-                                personnagesMorts.add(allies.get(personnageCible));
-                                allies.remove(personnageCible);
-                            }
+                        // Attaquer un personnage aléatoire
+                        int personnageCible = new Random().nextInt(allies.size());
+                        ennemi.attaquer(allies.get(personnageCible));
+                        // Si le personnage est mort, le supprimer de la liste
+                        if (allies.get(personnageCible).getPV() <= 0) {
+                            personnagesMorts.add(allies.get(personnageCible));
+                            allies.remove(personnageCible);
                         }
                     }
 

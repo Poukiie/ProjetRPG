@@ -3,13 +3,14 @@ package donjon;
 import personnages.ennemis.Blob;
 import personnages.ennemis.Boss;
 import personnages.ennemis.Ennemi;
+import personnages.ennemis.Ennemis;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Salle {
     private int numSalle;
-    private List<Ennemi> ennemis = new ArrayList<>();
+    private Ennemis ennemis = new Ennemis();
     private boolean isCompleted;
 
     public Salle(int numSalle) {
@@ -37,7 +38,7 @@ public class Salle {
 
     public boolean isCompleted() { return isCompleted; }
 
-    public List<Ennemi> getEnnemis() {
+    public Ennemis getEnnemis() {
         return ennemis;
     }
 
