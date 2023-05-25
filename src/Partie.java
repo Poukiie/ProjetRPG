@@ -10,22 +10,24 @@ import java.util.Random;
 
 public class Partie {
     private final List<Personnage> allies;
-    private int salleActuelle;
+    private final Donjon donjon;
     private final List<Salle> salles;
+    private int salleActuelle;
     private final Ennemis ennemis;
     private final Scanner sc = new Scanner(System.in);
 
     public Partie(List<Personnage> allies, Donjon donjon) {
         this.allies = allies;
+        this.donjon = donjon;
         this.salles = donjon.getSalles();
-        this.salleActuelle = 0;
+        this.salleActuelle = 1;
         this.ennemis = salles.get(salleActuelle).getEnnemis();
     }
 
     public void lancerDonjon() {
-        while (salleActuelle < 3 && !salles.get(salleActuelle).isCompleted()) {
-            System.out.println("-------- Salle " + salleActuelle + 1 + " --------");
-            while (!salles.get(salleActuelle).isCompleted()) {
+        while (!donjon.isCompleted(salleActuelle)) {
+            System.out.println("-------- Salle " + salleActuelle + " --------");
+            while (!salles.get(salleActuelle - 1).isCompleted()) {
                 // Tant que l'équipe n'est pas morte
                 while (allies.size() > 0) {
                     // Tant que l'équipe n'a pas tué tous les ennemis

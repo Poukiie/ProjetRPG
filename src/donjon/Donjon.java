@@ -5,13 +5,10 @@ import java.util.List;
 
 public class Donjon {
     private final String nomDonjon;
-    private boolean isCompleted;
-    private List<Salle> salles = new ArrayList<>();
-    private static final ArrayList<Donjon> donjons = new ArrayList<>();
+    private final List<Salle> salles = new ArrayList<>();
 
     public Donjon(String nomDonjon) {
         this.nomDonjon = nomDonjon;
-        this.isCompleted = false;
 
         // Créer trois salles
         Salle salle;
@@ -25,19 +22,11 @@ public class Donjon {
         return nomDonjon;
     }
 
-    public boolean isCompleted() {
-        return isCompleted;
-    }
-
-    public void setCompleted(boolean completed) {
-        isCompleted = completed;
+    public boolean isCompleted(int salleActuelle) {
+        return salleActuelle == 3 && salles.get(salleActuelle).isCompleted();
     }
 
     public List<Salle> getSalles() {
         return salles;
-    }
-
-    public static ArrayList<Donjon> getDonjons() {
-        return donjons;
     }
 }
