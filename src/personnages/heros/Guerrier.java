@@ -1,14 +1,13 @@
 package personnages.heros;
 
-import personnages.CapaciteSpeciale;
 import personnages.ennemis.Ennemi;
 
-public class Guerrier extends Heros<Ennemi> implements CapaciteSpeciale<Ennemi> {
+public class Guerrier extends Heros<Ennemi> {
     public Guerrier(String nom) {
-        super(nom, 85, 85, 90, 30, 85, 30, 30);
+        super(nom, 85, 85, 90, 30, 85, 30, 30, 30);
     }
 
-    // Capacité attaquer deux fois de suite (double valeurAttaque)
+    // Capacité: attaquer deux fois de suite
     @Override
     public void utiliserCapacite(Ennemi p) {
         if (this.getEnergie() < 10) {
@@ -21,7 +20,7 @@ public class Guerrier extends Heros<Ennemi> implements CapaciteSpeciale<Ennemi> 
     }
 
     @Override
-    public boolean isMultiTarget() {
+    public boolean estMulticible() {
         return false;
     }
 }

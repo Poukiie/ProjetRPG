@@ -3,20 +3,23 @@ import donjon.Salle;
 import personnages.Personnage;
 import personnages.ennemis.Ennemi;
 import personnages.ennemis.Ennemis;
+import personnages.heros.Heros;
+import recompenses.Consommable;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
 public class Partie {
-    private final List<Personnage> allies;
+    private final List<Heros> allies;
     private final Donjon donjon;
     private final List<Salle> salles;
     private int salleActuelle;
     private final Ennemis ennemis;
+//    private final Consommable consommables;
     private final Scanner sc = new Scanner(System.in);
 
-    public Partie(List<Personnage> allies, Donjon donjon) {
+    public Partie(List<Heros> allies, Donjon donjon) {
         this.allies = allies;
         this.donjon = donjon;
         this.salles = donjon.getSalles();
@@ -24,6 +27,7 @@ public class Partie {
         this.ennemis = salles.get(salleActuelle).getEnnemis();
     }
 
+    // TODO: diviser la méthode en plusieurs méthodes
     public void lancerDonjon() {
         while (!donjon.isCompleted(salleActuelle)) {
             System.out.println("-------- Salle " + salleActuelle + " --------");
@@ -32,23 +36,23 @@ public class Partie {
                 while (allies.size() > 0) {
                     // Tant que l'équipe n'a pas tué tous les ennemis
                     while (ennemis.size() > 0) {
-                        // L'équipe attaque
                         System.out.println("-------- Tour de l'équipe --------");
-                        for (Personnage personnage : allies) {
+                        for (Heros personnage : allies) {
                             // Vérifier que le personnage n'est pas mort
                             if (personnage.getPV() > 0) {
-                                System.out.println("Que doit faire " + personnage.getNom() + " ?\n" +
-                                        "PV : " + personnage.getPV() + "\n" +
-                                        "Energie : " + personnage.getEnergie() + "\n"
+                                System.out.println("Que doit faire " + personnage.getNom() + " ?\n"
+                                        + "PV: " + personnage.getPV() + "/" + personnage.getPVMax() + "\n"
+                                        + "Energie: " + personnage.getEnergie() + "/" + personnage.getEnergieMax() + "\n"
                                 );
-                                System.out.println("1. Attaquer un ennemi");
-                                System.out.println("2. Utiliser sa capacité spéciale");
-                                System.out.println("3. Utiliser un objet");
-                                System.out.println();
+                                System.out.println("1. Attaquer un ennemi\n"
+                                        + "2. Utiliser sa capacité spéciale\n"
+                                        + "3. Utiliser un objet");
+                                System.out.print("> ");
 
-                                int choice = Integer.parseInt(sc.nextLine());
+                                int choix = Integer.parseInt(sc.nextLine());
                                 int ennemiCible;
-                                switch (choice) {
+                                switch (choix) {
+                                    // Attaquer un ennemi
                                     case 1:
                                         ennemiCible = demanderCible();
                                         personnage.attaquer(ennemis.get(ennemiCible));
@@ -59,17 +63,31 @@ public class Partie {
                                         }
                                         break;
 
+                                    // Utiliser la capacité spéciale
                                     case 2:
-                                        ennemiCible = demanderCible();
+                                        if (personnage.estMulticible())
+                                            personnage.utiliserCapacite(ennemis);
+                                        else {
+                                            ennemiCible = demanderCible();
+                                            personnage.utiliserCapacite(ennemiCible);
+                                        }
+                                        break;
 
+                                    // Utiliser un objet
+                                    case 3:
+                                        // TODO: utiliser un objet
+                                        System.out.println("Quel objet voulez-vous utiliser ?");
+                                        break;
                                 }
                             }
                         }
 
                         // Les ennemis attaquent
+                        System.out.println("-------- Tour des ennemis --------");
                         for (Ennemi ennemi : ennemis) {
                             // Attaquer un personnage aléatoire
                             int personnageCible = new Random().nextInt(allies.size());
+                            // TODO: algorithme d'attaques pour l'ennemi
                             ennemi.attaquer(allies.get(personnageCible));
                             // Si le personnage est mort, le supprimer de la liste
                             if (allies.get(personnageCible).getPV() <= 0) {
@@ -88,6 +106,6 @@ public class Partie {
         System.out.println("Quel ennemi souhaitez-vous attaquer ?");
         System.out.println(ennemis);
         // TODO vérifier saisie
-        return Integer.parseInt(sc.nextLine()) -1;
+        return Integer.parseInt(sc.nextLine()) - 1;
     }
 }

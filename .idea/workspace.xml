@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f18eb56f-0857-4003-8b21-8d3368a269e7" name="Changes" comment="Init project">
-      <change afterPath="$PROJECT_DIR$/src/personnages/ennemis/Ennemis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/personnages/heros/Allies.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Appli.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Appli.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/donjon/Donjon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/donjon/Donjon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/donjon/Salle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/donjon/Salle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/CapaciteSpeciale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/CapaciteSpeciale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/Personnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/Personnage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/ennemis/Blob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/ennemis/Blob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/ennemis/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/ennemis/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/personnages/ennemis/Ennemi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/ennemis/Ennemi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/ennemis/Ennemis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/ennemis/Ennemis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Guerrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Guerrier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Heros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Heros.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Mage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Soigneur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Soigneur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Tank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnages/heros/Voleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnages/heros/Voleur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

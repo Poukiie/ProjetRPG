@@ -113,9 +113,9 @@ public class Appli {
      * Affiche le menu pour choisir le donjon
      */
     private static Donjon showDonjons(Scanner sc) {
-        Donjon d1 = new Donjon("Le donjon facile");
-        Donjon d2 = new Donjon("Le second donjon");
-        Donjon d3 = new Donjon("Le donjon final");
+        Donjon d1 = new Donjon("Le donjon facile", 1);
+        Donjon d2 = new Donjon("Le second donjon", 2);
+        Donjon d3 = new Donjon("Le donjon final", 3);
 
         String listeDonjons = "Choisissez un donjon :\n"
                 + "1. " + d1.getNomDonjon() + "\n"
@@ -130,7 +130,7 @@ public class Appli {
             donjonChoisi = sc.nextLine();
         }
 
-        // stocker le donjon choisi dans une variable
+        // Stocker le donjon choisi dans une variable
         Donjon donjon = null;
         switch(donjonChoisi) {
             case "1": donjon = d1; break;
@@ -174,7 +174,6 @@ public class Appli {
             System.out.println(personnageChoisi.getNom() + " a rejoint votre équipe !");
         }
         System.out.println(">>> Votre équipe est prête ! Lancement du donjon........");
-        // ajouter un point dans l'affichage toutes les 1 secondes
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

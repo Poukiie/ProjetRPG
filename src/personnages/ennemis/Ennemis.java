@@ -27,16 +27,24 @@ public class Ennemis implements Iterable<Ennemi> {
         return this.ennemis.size();
     }
 
+    /**
+     * Permet de boucler sur la classe Ennemis avec un foreach
+     */
     @Override
     public Iterator<Ennemi> iterator() {
         return ennemis.iterator();
     }
 
+    /**
+     * Permet d'afficher la liste des ennemis
+     * @return la liste des ennemis
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         int i = 1;
         for (Ennemi e : this.ennemis) {
+            // e: implicitement le toString() de Ennemi
             sb.append(i++).append(". ").append(e).append("\n");
         }
         return sb.toString();

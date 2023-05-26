@@ -1,14 +1,13 @@
 package personnages.heros;
 
-import personnages.CapaciteSpeciale;
 import personnages.ennemis.Ennemi;
 
-public class Voleur extends Heros<Ennemi> implements CapaciteSpeciale<Ennemi> {
+public class Voleur extends Heros<Ennemi> {
     public Voleur(String nom) {
-        super(nom, 125,	125, 30,	60,	70, 90, 55);
+        super(nom, 125, 125, 30, 60, 70, 90, 55, 55);
     }
 
-    // Capacité voler 20% des PV à un ennemi
+    // Capacité: voler 20% des PV à un ennemi
     @Override
     public void utiliserCapacite(Ennemi p) {
         if (this.getEnergie() < 10) {
@@ -22,7 +21,7 @@ public class Voleur extends Heros<Ennemi> implements CapaciteSpeciale<Ennemi> {
     }
 
     @Override
-    public boolean isMultiTarget() {
+    public boolean estMulticible() {
         return false;
     }
 }

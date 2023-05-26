@@ -1,12 +1,11 @@
 package personnages.heros;
 
-import personnages.CapaciteSpeciale;
 import personnages.Personnage;
 
-public class Soigneur extends Heros<Personnage> implements CapaciteSpeciale<Personnage> {
+public class Soigneur extends Heros<Personnage> {
 
     public Soigneur(String nom) {
-        super(nom, 150, 150, 25, 60, 60, 50, 60);
+        super(nom, 150, 150, 25, 60, 60, 50, 60, 60);
     }
 
     // Capacité de soin (choix d'UN perso à heal, restaure selon 20% des PV max du healer)
@@ -22,7 +21,7 @@ public class Soigneur extends Heros<Personnage> implements CapaciteSpeciale<Pers
     }
 
     @Override
-    public boolean isMultiTarget() {
+    public boolean estMulticible() {
         return false;
     }
 }

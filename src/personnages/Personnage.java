@@ -12,10 +12,11 @@ public class Personnage {
     private int precision;
     private int esquive;
     private int energie; // pour utiliser des capacités
+    private int energieMax;
     private static int counter = 0;
     private static final ArrayList<Personnage> personnages = new ArrayList<>();
 
-    public Personnage(String nom, int pv, int pvMax, int atq, int def, int precision, int esquive, int energie) {
+    public Personnage(String nom, int pv, int pvMax, int atq, int def, int precision, int esquive, int energie, int energieMax) {
         this.nom = nom;
         this.PV = pv;
         this.PVMax = pvMax;
@@ -24,6 +25,7 @@ public class Personnage {
         this.precision = precision;
         this.esquive = esquive;
         this.energie = energie;
+        this.energieMax = energieMax;
         Personnage.counter += 1;
     }
 
@@ -83,6 +85,10 @@ public class Personnage {
         this.energie = energie;
     }
 
+    public int getEnergieMax() {
+        return energieMax;
+    }
+
     public static int getCounter() {
         return counter;
     }
@@ -91,13 +97,18 @@ public class Personnage {
         return personnages;
     }
 
+    // Roll un nombre entre 1 et 100
+    // Stat précision : si roll <= stat, alors attaque réussie
+    // Stat esquive : si roll <= stat, alors attaque esquivée
     private boolean roll(int stat) {
         return new Random().nextInt(100) + 1 <= stat;
     }
 
     public void attaquer(Personnage p) {
-        // TODO: condition si ATK < DEF ou ATK = DEF, on attaque de 1
         int valeurAttaque = this.ATK - p.getDEF();
+        int newPV;
+
+        // Si ATK > DEF
         if (valeurAttaque > 0) {
             // Check précision
             boolean attaquePrecise = this.roll(this.precision);
@@ -105,17 +116,35 @@ public class Personnage {
                 // Check esquive adversaire
                 boolean attaqueEsquivee = p.roll(p.getEsquive());
                 if (!attaqueEsquivee) {
-                    int diff = p.getPV() - valeurAttaque;
-                    int newPV = Math.max(diff, 0);
+                    newPV = returnNewPV(valeurAttaque, p);
                     p.setPV(newPV);
                     System.out.println(this.nom + " inflige " + valeurAttaque + " dégâts à " + p.getNom()
-                            + " (" + (newPV) + "PV)");
+                            + " (" + newPV + "/" + p.getPVMax() + "PV)");
+                    return;
+                }
+                else {
+                    System.out.println(p.getNom() + " a esquivé l'attaque de " + this.nom + " ("
+                            + p.getPV() + "/" + p.getPVMax() + "PV)");
                     return;
                 }
             }
+            else {
+                System.out.println(this.nom + " a raté son attaque sur " + p.getNom() + " ("
+                        + p.getPV() + "/" + p.getPVMax() + "PV)");
+                return;
+            }
         }
 
-        System.out.println(this.nom + " n'inflige aucun dégât à " + p.getNom()
-                + " (" + (p.getPV()) + "PV)");
+        // Pour éviter que le perso inflige 0 dégât (combat interminable)
+        valeurAttaque = (int) (this.ATK * 0.2);
+        newPV = returnNewPV(valeurAttaque, p);
+        p.setPV(newPV);
+        System.out.println(this.nom + " n'inflige que " + valeurAttaque + " dégâts à " + p.getNom()
+                + " (" + newPV + "/" + p.getPVMax() + "PV)");
+    }
+
+    private int returnNewPV(int valeurAttaque, Personnage p) {
+        int diff = p.getPV() - valeurAttaque;
+        return Math.max(diff, 0);
     }
 }

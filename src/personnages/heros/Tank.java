@@ -1,13 +1,12 @@
 package personnages.heros;
 
-import personnages.CapaciteSpeciale;
 import personnages.Personnage;
 
 import java.util.List;
 
-public class Tank extends Heros<List<Personnage>> implements CapaciteSpeciale<List<Personnage>> {
+public class Tank extends Heros<List<Personnage>> {
     public Tank(String nom) {
-        super(nom, 185, 185, 45, 100, 40, 50, 45);
+        super(nom, 185, 185, 45, 100, 40, 50, 45, 45);
     }
 
     // Capacité bouclier : Son esquive passe à 100 et celle de ses alliés à 100 aussi pendant 1 tour
@@ -29,7 +28,7 @@ public class Tank extends Heros<List<Personnage>> implements CapaciteSpeciale<Li
     }
 
     @Override
-    public boolean isMultiTarget() {
+    public boolean estMulticible() {
         return true;
     }
 }

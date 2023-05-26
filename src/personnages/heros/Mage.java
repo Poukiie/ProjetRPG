@@ -1,18 +1,14 @@
 package personnages.heros;
 
-import personnages.CapaciteSpeciale;
-import personnages.Personnage;
 import personnages.ennemis.Ennemi;
 import personnages.ennemis.Ennemis;
 
-import java.util.List;
-
-public class Mage extends Heros<Ennemis> implements CapaciteSpeciale<Ennemis> {
+public class Mage extends Heros<Ennemis> {
     public Mage(String nom) {
-        super(nom, 100, 100, 70, 50, 80, 50, 70);
+        super(nom, 100, 100, 70, 50, 80, 50, 70, 70);
     }
 
-    // Capacité : attaquer tous les ennemis en même temps (valeurAttaque / 2)
+    // Capacité: attaquer tous les ennemis en même temps (valeurAttaque / 2)
     @Override
     public void utiliserCapacite(Ennemis ennemis) {
         if (this.getEnergie() < 10) {
@@ -28,7 +24,7 @@ public class Mage extends Heros<Ennemis> implements CapaciteSpeciale<Ennemis> {
     }
 
     @Override
-    public boolean isMultiTarget() {
+    public boolean estMulticible() {
         return true;
     }
 }

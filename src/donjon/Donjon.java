@@ -7,13 +7,13 @@ public class Donjon {
     private final String nomDonjon;
     private final List<Salle> salles = new ArrayList<>();
 
-    public Donjon(String nomDonjon) {
+    public Donjon(String nomDonjon, int numDonjon) {
         this.nomDonjon = nomDonjon;
 
-        // Créer trois salles
+        // Créer trois salles par donjon
         Salle salle;
         for (int i = 1; i <= 3; i++) {
-            salle = new Salle(i);
+            salle = new Salle(i, numDonjon);
             this.salles.add(salle);
         }
     }
