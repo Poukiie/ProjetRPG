@@ -10,8 +10,8 @@ public class Appli {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String input;
-        List<Personnage> personnages = Personnage.getPersonnages();
-        List<Personnage> allies = new ArrayList<>();
+        List<Heros> personnages = new ArrayList<>();
+        List<Heros> allies = new ArrayList<>();
         boolean continuerJeu = true;
 
         // Afficher le menu en boucle tant que le joueur ne quitte pas
@@ -77,7 +77,7 @@ public class Appli {
      * Création de personnage avec nom + classe
      * Ajout du personnage dans la liste des personnages
      */
-    private static void creerPersonnage(List<Personnage> personnages, Scanner sc) {
+    private static void creerPersonnage(List<Heros> personnages, Scanner sc) {
         System.out.print("Choisissez une classe entre Guerrier, Mage, Tank, Soigneur, Voleur\n" + "> ");
         String classe = sc.nextLine();
 
@@ -91,7 +91,7 @@ public class Appli {
         System.out.print("Nom du personnage :\n" + "> ");
         String nom = sc.nextLine();
 
-        Personnage p;
+        Heros p;
         switch(classe.toUpperCase()) {
             case "GUERRIER": p = new Guerrier(nom); break;
             case "MAGE": p = new Mage(nom); break;
@@ -143,7 +143,7 @@ public class Appli {
     /**
      * Affiche le menu pour choisir l'équipe de 3 personnages
      */
-    private static void choisirEquipe(List<Personnage> personnages, List<Personnage> allies, Scanner sc) {
+    private static void choisirEquipe(List<Heros> personnages, List<Heros> allies, Scanner sc) {
         System.out.println("Choisissez 3 personnages pour votre équipe :\n" + "--------");
 
         // Affichage des personnages
@@ -169,7 +169,7 @@ public class Appli {
                 indice = sc.nextInt();
             }
             // On affiche à partir de 1 mais le perso est en fait à l'indice i - 1
-            Personnage personnageChoisi = personnages.get(indice - 1);
+            Heros personnageChoisi = personnages.get(indice - 1);
             allies.add(personnageChoisi);
             System.out.println(personnageChoisi.getNom() + " a rejoint votre équipe !");
         }
@@ -179,7 +179,6 @@ public class Appli {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
         // "Clear" console
         for (int i = 0; i < 30; ++i) System.out.println();

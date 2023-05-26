@@ -65,9 +65,11 @@ public class Partie {
 
                                     // Utiliser la capacité spéciale
                                     case 2:
+                                        // Pour le mage et le tank, AoE dmg
                                         if (personnage.estMulticible())
                                             personnage.utiliserCapacite(ennemis);
                                         else {
+                                            // Pour les autres, choisir un ennemi
                                             ennemiCible = demanderCible();
                                             personnage.utiliserCapacite(ennemiCible);
                                         }
@@ -106,6 +108,13 @@ public class Partie {
         System.out.println("Quel ennemi souhaitez-vous attaquer ?");
         System.out.println(ennemis);
         // TODO vérifier saisie
+        System.out.print("> ");
+        int indice = sc.nextInt();
+        while (!(indice >= 1 && indice <= ennemis.size())) {
+            System.out.println("Indice invalide : " + indice);
+            System.out.println("Veuillez entrer un indice valide :\n" + "> ");
+            indice = sc.nextInt();
+        }
         return Integer.parseInt(sc.nextLine()) - 1;
     }
 }
