@@ -11,7 +11,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Partie {
-    private final List<Heros> allies;
+    private final List<Heros<?>> allies;
     private final Donjon donjon;
     private final List<Salle> salles;
     private int salleActuelle;
@@ -19,7 +19,7 @@ public class Partie {
 //    private final Consommable consommables;
     private final Scanner sc = new Scanner(System.in);
 
-    public Partie(List<Heros> allies, Donjon donjon) {
+    public Partie(List<Heros<?>> allies, Donjon donjon) {
         this.allies = allies;
         this.donjon = donjon;
         this.salles = donjon.getSalles();
@@ -37,7 +37,7 @@ public class Partie {
                     // Tant que l'équipe n'a pas tué tous les ennemis
                     while (ennemis.size() > 0) {
                         System.out.println("-------- Tour de l'équipe --------");
-                        for (Heros personnage : allies) {
+                        for (Heros<?> personnage : allies) {
                             // Vérifier que le personnage n'est pas mort
                             if (personnage.getPV() > 0) {
                                 System.out.println("Que doit faire " + personnage.getNom() + " ?\n"
