@@ -1,25 +1,22 @@
 import donjon.Donjon;
 import donjon.Salle;
 import personnages.Personnage;
-import personnages.ennemis.Ennemi;
-import personnages.ennemis.Ennemis;
+import personnages.Personnages;
 import personnages.heros.Heros;
-import recompenses.Consommable;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
 public class Partie {
-    private final List<Heros<?>> allies;
+    private final List<Heros> allies;
     private final Donjon donjon;
     private final List<Salle> salles;
     private int salleActuelle;
-    private final Ennemis ennemis;
-//    private final Consommable consommables;
+    private final Personnages ennemis;
     private final Scanner sc = new Scanner(System.in);
 
-    public Partie(List<Heros<?>> allies, Donjon donjon) {
+    public Partie(List<Heros> allies, Donjon donjon) {
         this.allies = allies;
         this.donjon = donjon;
         this.salles = donjon.getSalles();
@@ -37,7 +34,7 @@ public class Partie {
                     // Tant que l'équipe n'a pas tué tous les ennemis
                     while (ennemis.size() > 0) {
                         System.out.println("-------- Tour de l'équipe --------");
-                        for (Heros<?> personnage : allies) {
+                        for (Heros personnage : allies) {
                             // Vérifier que le personnage n'est pas mort
                             if (personnage.getPV() > 0) {
                                 System.out.println("Que doit faire " + personnage.getNom() + " ?\n"
@@ -50,15 +47,15 @@ public class Partie {
                                 System.out.print("> ");
 
                                 int choix = Integer.parseInt(sc.nextLine());
-                                int ennemiCible;
+                                Personnage ennemiCible;
                                 switch (choix) {
                                     // Attaquer un ennemi
                                     case 1:
                                         ennemiCible = demanderCible();
-                                        personnage.attaquer(ennemis.get(ennemiCible));
+                                        personnage.attaquer(ennemiCible);
 
                                         // Si l'ennemi est mort, le supprimer de la liste
-                                        if (ennemis.get(ennemiCible).getPV() <= 0) {
+                                        if (ennemiCible.getPV() <= 0) {
                                             ennemis.remove(ennemiCible);
                                         }
                                         break;
@@ -67,11 +64,11 @@ public class Partie {
                                     case 2:
                                         // Pour le mage et le tank, AoE dmg
                                         if (personnage.estMulticible())
-                                            personnage.utiliserCapacite(ennemis);
+                                            personnage.capacite(null, ennemis).utiliser();
                                         else {
                                             // Pour les autres, choisir un ennemi
                                             ennemiCible = demanderCible();
-                                            personnage.utiliserCapacite(ennemiCible);
+                                            personnage.capacite(ennemiCible, null).utiliser();
                                         }
                                         break;
 
@@ -86,7 +83,7 @@ public class Partie {
 
                         // Les ennemis attaquent
                         System.out.println("-------- Tour des ennemis --------");
-                        for (Ennemi ennemi : ennemis) {
+                        for (Personnage ennemi : ennemis) {
                             // Attaquer un personnage aléatoire
                             int personnageCible = new Random().nextInt(allies.size());
                             // TODO: algorithme d'attaques pour l'ennemi
@@ -104,7 +101,7 @@ public class Partie {
         }
     }
 
-    private int demanderCible() {
+    private Personnage demanderCible() {
         System.out.println("Quel ennemi souhaitez-vous attaquer ?");
         System.out.println(ennemis);
         // TODO vérifier saisie
@@ -115,6 +112,9 @@ public class Partie {
             System.out.println("Veuillez entrer un indice valide :\n" + "> ");
             indice = sc.nextInt();
         }
-        return Integer.parseInt(sc.nextLine()) - 1;
+
+        int index = Integer.parseInt(sc.nextLine()) - 1;
+
+        return ennemis.get(index);
     }
 }

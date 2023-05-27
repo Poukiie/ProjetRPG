@@ -3,14 +3,12 @@ package donjon;
 import personnages.ennemis.Blob;
 import personnages.ennemis.Boss;
 import personnages.ennemis.Ennemi;
-import personnages.ennemis.Ennemis;
+import personnages.Personnages;
 
 public class Salle {
-    private int numSalle;
-    private Ennemis ennemis = new Ennemis();
+    private final Personnages personnages = new Personnages();
 
     public Salle(int numSalle, int numDonjon) {
-        this.numSalle = numSalle;
         // Créer une liste de 4 ou 5 blobs
         Ennemi ennemi;
         if (numSalle != 3) {
@@ -18,32 +16,28 @@ public class Salle {
             // 4 + ce nombre = 4 ou 5
             for (int i = 0; i < 4 + (int) (Math.random() * 2); i++) {
                 ennemi = new Blob("Blob " + (i + 1));
-                this.ennemis.add(ennemi);
+                this.personnages.add(ennemi);
             }
         } else {
             // Créer un boss si c'est la dernière salle
             ennemi = new Boss("Boss");
-            this.ennemis.add(ennemi);
+            this.personnages.add(ennemi);
             // Créer 2 blobs en plus si c'est la salle 3 du donjon 3
             if (numDonjon == 3) {
                 for (int j = 0; j < 2; j++) {
                     ennemi = new Blob("Blob " + (j + 1));
-                    this.ennemis.add(ennemi);
+                    this.personnages.add(ennemi);
                 }
             }
         }
     }
 
-    public int getNumSalle() {
-        return numSalle;
-    }
-
     public boolean isCompleted() {
-        return ennemis.size() == 0;
+        return personnages.size() == 0;
     }
 
-    public Ennemis getEnnemis() {
-        return ennemis;
+    public Personnages getEnnemis() {
+        return personnages;
     }
 
 }

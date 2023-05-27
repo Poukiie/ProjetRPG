@@ -1,10 +1,11 @@
 package personnages.heros;
 
 import personnages.Personnage;
+import personnages.Personnages;
+import personnages.capacite.Capacite;
+import personnages.capacite.CapaciteTank;
 
-import java.util.List;
-
-public class Tank extends Heros<List<Personnage>> {
+public class Tank extends Heros {
     public Tank(String nom) {
         super(nom, 185, 185, 45, 100, 40, 50, 45, 45);
     }
@@ -13,18 +14,8 @@ public class Tank extends Heros<List<Personnage>> {
     // L'attaque de l'ennemi est ratée puisque elle est forcément esquivée (protection)
     // Ou bien augmente considérablement leur DEF
     @Override
-    public void utiliserCapacite(List<Personnage> allies) {
-        if (this.getEnergie() < 10) {
-            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
-            return;
-        }
-
-        this.setEnergie(this.getEnergie() - 10);
-        this.setEsquive(100);
-        for (Personnage p : allies)
-            p.setEsquive(100);
-
-        // TODO: gérer le tour suivant pour remettre l'esquive à la normale
+    public Capacite capacite(Personnage cible, Personnages cibles) {
+        return new CapaciteTank(this ,cibles);
     }
 
     @Override
