@@ -2,21 +2,20 @@ import donjon.Donjon;
 import donjon.Salle;
 import personnages.Personnage;
 import personnages.Personnages;
-import personnages.heros.Heros;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
 public class Partie {
-    private final List<Heros> allies;
+    private final Personnages allies;
     private final Donjon donjon;
     private final List<Salle> salles;
     private int salleActuelle;
     private final Personnages ennemis;
     private final Scanner sc = new Scanner(System.in);
 
-    public Partie(List<Heros> allies, Donjon donjon) {
+    public Partie(Personnages allies, Donjon donjon) {
         this.allies = allies;
         this.donjon = donjon;
         this.salles = donjon.getSalles();
@@ -34,12 +33,12 @@ public class Partie {
                     // Tant que l'équipe n'a pas tué tous les ennemis
                     while (ennemis.size() > 0) {
                         System.out.println("-------- Tour de l'équipe --------");
-                        for (Heros personnage : allies) {
-                            // Vérifier que le personnage n'est pas mort
-                            if (personnage.getPV() > 0) {
-                                System.out.println("Que doit faire " + personnage.getNom() + " ?\n"
-                                        + "PV: " + personnage.getPV() + "/" + personnage.getPVMax() + "\n"
-                                        + "Energie: " + personnage.getEnergie() + "/" + personnage.getEnergieMax() + "\n"
+                        for (Personnage heros : allies) {
+                            // Vérifier que le heros n'est pas mort
+                            if (heros.getPV() > 0) {
+                                System.out.println("Que doit faire " + heros.getNom() + " ?\n"
+                                        + "PV: " + heros.getPV() + "/" + heros.getPVMax() + "\n"
+                                        + "Energie: " + heros.getEnergie() + "/" + heros.getEnergieMax() + "\n"
                                 );
                                 System.out.println("1. Attaquer un ennemi\n"
                                         + "2. Utiliser sa capacité spéciale\n"
@@ -52,7 +51,7 @@ public class Partie {
                                     // Attaquer un ennemi
                                     case 1:
                                         ennemiCible = demanderCible();
-                                        personnage.attaquer(ennemiCible);
+                                        heros.attaquer(ennemiCible);
 
                                         // Si l'ennemi est mort, le supprimer de la liste
                                         if (ennemiCible.getPV() <= 0) {
@@ -63,12 +62,12 @@ public class Partie {
                                     // Utiliser la capacité spéciale
                                     case 2:
                                         // Pour le mage et le tank, AoE dmg
-                                        if (personnage.estMulticible())
-                                            personnage.capacite(null, ennemis).utiliser();
+                                        if (heros.estMulticible())
+                                            heros.capacite(null, ennemis).utiliser();
                                         else {
                                             // Pour les autres, choisir un ennemi
                                             ennemiCible = demanderCible();
-                                            personnage.capacite(ennemiCible, null).utiliser();
+                                            heros.capacite(ennemiCible, null).utiliser();
                                         }
                                         break;
 
@@ -85,12 +84,13 @@ public class Partie {
                         System.out.println("-------- Tour des ennemis --------");
                         for (Personnage ennemi : ennemis) {
                             // Attaquer un personnage aléatoire
-                            int personnageCible = new Random().nextInt(allies.size());
+                            int index = new Random().nextInt(allies.size());
+                            Personnage cible = allies.get(index);
                             // TODO: algorithme d'attaques pour l'ennemi
-                            ennemi.attaquer(allies.get(personnageCible));
+                            ennemi.attaquer(cible);
                             // Si le personnage est mort, le supprimer de la liste
-                            if (allies.get(personnageCible).getPV() <= 0) {
-                                allies.remove(personnageCible);
+                            if (cible.getPV() <= 0) {
+                                allies.remove(cible);
                             }
                         }
 

@@ -1,8 +1,8 @@
 package donjon;
 
+import personnages.Personnage;
 import personnages.ennemis.Blob;
 import personnages.ennemis.Boss;
-import personnages.ennemis.Ennemi;
 import personnages.Personnages;
 
 public class Salle {
@@ -10,7 +10,7 @@ public class Salle {
 
     public Salle(int numSalle, int numDonjon) {
         // Créer une liste de 4 ou 5 blobs
-        Ennemi ennemi;
+        Personnage ennemi;
         if (numSalle != 3) {
             // (int) (Math.random() * 2) génère un nombre aléatoire entre 0 et 1
             // 4 + ce nombre = 4 ou 5

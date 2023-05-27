@@ -1,9 +1,11 @@
 package personnages;
 
+import personnages.capacite.Capacite;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Personnage {
+public abstract class Personnage {
     private String nom;
     private int PV;
     private int PVMax;
@@ -28,6 +30,9 @@ public class Personnage {
         this.energieMax = energieMax;
         Personnage.counter += 1;
     }
+
+    public abstract Capacite capacite(Personnage cible, Personnages cibles);
+    public abstract boolean estMulticible();
 
     public String getNom() {
         return nom;
@@ -146,5 +151,10 @@ public class Personnage {
     private int returnNewPV(int valeurAttaque, Personnage p) {
         int diff = p.getPV() - valeurAttaque;
         return Math.max(diff, 0);
+    }
+
+    @Override
+    public String toString() {
+        return getNom() + " (" + getPV() + "/" + getPVMax() + " PV)";
     }
 }

@@ -1,13 +1,12 @@
 package personnages.capacite;
 
 import personnages.Personnage;
-import personnages.heros.Heros;
 
 public class CapaciteGuerrier implements Capacite {
-    private final Heros guerrier;
+    private final Personnage guerrier;
     private final Personnage ennemi;
 
-    public CapaciteGuerrier(Heros guerrier, Personnage ennemi) {
+    public CapaciteGuerrier(Personnage guerrier, Personnage ennemi) {
         this.guerrier = guerrier;
         this.ennemi = ennemi;
     }

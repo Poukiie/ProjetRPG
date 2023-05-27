@@ -10,8 +10,8 @@ public class Appli {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String input;
-        List<Heros> personnages = new ArrayList<>();
-        List<Heros> allies = new ArrayList<>();
+        Personnages personnages = new Personnages();
+        Personnages allies = new Personnages();
         boolean continuerJeu = true;
 
         // Afficher le menu en boucle tant que le joueur ne quitte pas
@@ -77,7 +77,7 @@ public class Appli {
      * Création de personnage avec nom + classe
      * Ajout du personnage dans la liste des personnages
      */
-    private static void creerPersonnage(List<Heros> personnages, Scanner sc) {
+    private static void creerPersonnage(Personnages personnages, Scanner sc) {
         System.out.print("Choisissez une classe entre Guerrier, Mage, Tank, Soigneur, Voleur\n" + "> ");
         String classe = sc.nextLine();
 
@@ -143,7 +143,7 @@ public class Appli {
     /**
      * Affiche le menu pour choisir l'équipe de 3 personnages
      */
-    private static void choisirEquipe(List<Heros> personnages, List<Heros> allies, Scanner sc) {
+    private static void choisirEquipe(Personnages personnages, Personnages allies, Scanner sc) {
         System.out.println("Choisissez 3 personnages pour votre équipe :\n" + "--------");
 
         // Affichage des personnages
@@ -169,9 +169,9 @@ public class Appli {
                 indice = sc.nextInt();
             }
             // On affiche à partir de 1 mais le perso est en fait à l'indice i - 1
-            Heros personnageChoisi = personnages.get(indice - 1);
-            allies.add(personnageChoisi);
-            System.out.println(personnageChoisi.getNom() + " a rejoint votre équipe !");
+            Personnage choisi = personnages.get(indice - 1);
+            allies.add(choisi);
+            System.out.println(choisi.getNom() + " a rejoint votre équipe !");
         }
         System.out.println(">>> Votre équipe est prête ! Lancement du donjon........");
         try {

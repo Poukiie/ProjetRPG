@@ -1,7 +1,22 @@
 package personnages.ennemis;
 
-public class Blob extends Ennemi {
+import personnages.Personnage;
+import personnages.Personnages;
+import personnages.capacite.Capacite;
+import personnages.capacite.CapaciteBlob;
+
+public class Blob extends Personnage {
     public Blob(String nom) {
         super(nom, 50, 50, 30, 30, 70, 20, 0, 0);
+    }
+
+    @Override
+    public Capacite capacite(Personnage cible, Personnages cibles) {
+        return new CapaciteBlob(this, cible);
+    }
+
+    @Override
+    public boolean estMulticible() {
+        return false;
     }
 }

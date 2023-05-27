@@ -1,13 +1,12 @@
 package personnages.capacite;
 
 import personnages.Personnage;
-import personnages.heros.Heros;
 
 public class CapaciteVoleur implements Capacite {
-    private final Heros voleur;
+    private final Personnage voleur;
     private final Personnage cible;
 
-    public CapaciteVoleur(Heros voleur, Personnage cible) {
+    public CapaciteVoleur(Personnage voleur, Personnage cible) {
         this.voleur = voleur;
         this.cible = cible;
     }

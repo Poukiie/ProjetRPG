@@ -1,13 +1,12 @@
 package personnages.capacite;
 
-import personnages.heros.Heros;
 import personnages.Personnage;
 
 public class CapaciteSoigneur implements Capacite {
-    private final Heros soigneur;
+    private final Personnage soigneur;
     private final Personnage cible;
 
-    public CapaciteSoigneur(Heros soigneur, Personnage cible) {
+    public CapaciteSoigneur(Personnage soigneur, Personnage cible) {
         this.soigneur = soigneur;
         this.cible = cible;
     }

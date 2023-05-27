@@ -2,13 +2,12 @@ package personnages.capacite;
 
 import personnages.Personnage;
 import personnages.Personnages;
-import personnages.heros.Heros;
 
 public class CapaciteTank implements Capacite {
-    private final Heros tank;
+    private final Personnage tank;
     private final Personnages allies;
 
-    public CapaciteTank(Heros tank, Personnages allies) {
+    public CapaciteTank(Personnage tank, Personnages allies) {
         this.tank = tank;
         this.allies = allies;
     }
