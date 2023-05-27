@@ -5,7 +5,7 @@ import personnages.Personnages;
 import personnages.capacite.Capacite;
 import personnages.capacite.CapaciteVoleur;
 
-public class Voleur extends Heros {
+public class Voleur extends Personnage {
     public Voleur(String nom) {
         super(nom, 125, 125, 30, 60, 70, 90, 55, 55);
     }

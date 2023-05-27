@@ -91,7 +91,7 @@ public class Appli {
         System.out.print("Nom du personnage :\n" + "> ");
         String nom = sc.nextLine();
 
-        Heros p;
+        Personnage p;
         switch(classe.toUpperCase()) {
             case "GUERRIER": p = new Guerrier(nom); break;
             case "MAGE": p = new Mage(nom); break;

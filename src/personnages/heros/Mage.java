@@ -5,7 +5,7 @@ import personnages.Personnages;
 import personnages.capacite.Capacite;
 import personnages.capacite.CapaciteMage;
 
-public class Mage extends Heros {
+public class Mage extends Personnage {
     public Mage(String nom) {
         super(nom, 100, 100, 70, 50, 80, 50, 70, 70);
     }

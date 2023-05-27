@@ -5,7 +5,7 @@ import personnages.Personnages;
 import personnages.capacite.Capacite;
 import personnages.capacite.CapaciteTank;
 
-public class Tank extends Heros {
+public class Tank extends Personnage {
     public Tank(String nom) {
         super(nom, 185, 185, 45, 100, 40, 50, 45, 45);
     }
