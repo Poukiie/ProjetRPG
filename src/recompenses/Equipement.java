@@ -1,11 +1,11 @@
 package recompenses;
 
 public class Equipement extends Objet {
-    private int bonusAttaque;
-    private int bonusDefense;
-    private int bonusPrecision;
-    private int bonusEsquive;
-    private int bonusEnergie;
+    private final int bonusAttaque;
+    private final int bonusDefense;
+    private final int bonusPrecision;
+    private final int bonusEsquive;
+    private final int bonusEnergie;
 
     public Equipement(String nom, int bonusAttaque, int bonusDefense, int bonusPrecision, int bonusEsquive, int bonusEnergie) {
         super(nom);
