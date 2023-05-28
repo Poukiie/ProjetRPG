@@ -25,4 +25,9 @@ public class Guerrier extends Personnage {
     public boolean cibleEnnemis() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " - " + getClass().getSimpleName();
+    }
 }

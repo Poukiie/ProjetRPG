@@ -44,7 +44,7 @@ public class Appli {
                 // 3. Voir mes personnages (compteur, nom - classe)
                 case "3":
                     System.out.println("Vous avez créé " + Personnage.getCounter() + " personnages en tout.\n" + "--------");
-                    System.out.println(personnages);
+                    System.out.print(personnages);
                     System.out.println("--------");
                     break;
 
@@ -74,26 +74,27 @@ public class Appli {
      * Ajout du personnage dans la liste des personnages
      */
     private static void creerPersonnage(Personnages personnages, Scanner sc) {
-        System.out.print("Choisissez une classe entre Guerrier, Mage, Tank, Soigneur, Voleur\n" + "> ");
-        String classe = sc.nextLine();
-
-        while(!(classe.equalsIgnoreCase("GUERRIER") || classe.equalsIgnoreCase("MAGE")
-                || classe.equalsIgnoreCase("TANK") || classe.equalsIgnoreCase("SOIGNEUR")
-                || classe.equalsIgnoreCase("VOLEUR"))) {
-            System.out.print("Veuillez rentrer un classe correcte :\n" + "> ");
-            classe = sc.nextLine();
-        }
-
         System.out.print("Nom du personnage :\n" + "> ");
         String nom = sc.nextLine();
 
+        System.out.print("Choisissez une classe :\n" + "1. Guerrier\n" + "2. Mage\n"
+                        + "3. Tank\n" + "4. Soigneur\n" + "5. Voleur\n" + "> ");
+        String classe = sc.nextLine();
+
+        while(!(classe.equals("1") || classe.equals("2")
+                || classe.equals("3") || classe.equals("4")
+                || classe.equals("5"))) {
+            System.out.print("Veuillez rentrer un numéro correct :\n" + "> ");
+            classe = sc.nextLine();
+        }
+
         Personnage p;
-        switch(classe.toUpperCase()) {
-            case "GUERRIER": p = new Guerrier(nom); break;
-            case "MAGE": p = new Mage(nom); break;
-            case "TANK": p = new Tank(nom); break;
-            case "SOIGNEUR": p = new Soigneur(nom); break;
-            case "VOLEUR": p = new Voleur(nom); break;
+        switch(classe) {
+            case "1": p = new Guerrier(nom); break;
+            case "2": p = new Mage(nom); break;
+            case "3": p = new Tank(nom); break;
+            case "4": p = new Soigneur(nom); break;
+            case "5": p = new Voleur(nom); break;
             default: throw new IllegalArgumentException();
         }
 

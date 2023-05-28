@@ -25,4 +25,9 @@ public class Soigneur extends Personnage {
     public boolean cibleEnnemis() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " - " + getClass().getSimpleName();
+    }
 }
