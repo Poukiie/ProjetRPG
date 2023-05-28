@@ -19,4 +19,9 @@ public class Boss extends Personnage {
     public boolean estMulticible() {
         return true;
     }
+
+    @Override
+    public boolean cibleEnnemis() {
+        return true;
+    }
 }

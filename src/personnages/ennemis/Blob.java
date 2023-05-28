@@ -19,4 +19,9 @@ public class Blob extends Personnage {
     public boolean estMulticible() {
         return false;
     }
+
+    @Override
+    public boolean cibleEnnemis() {
+        return true;
+    }
 }

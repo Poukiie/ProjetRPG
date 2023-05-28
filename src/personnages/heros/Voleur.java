@@ -20,4 +20,9 @@ public class Voleur extends Personnage {
     public boolean estMulticible() {
         return false;
     }
+
+    @Override
+    public boolean cibleEnnemis() {
+        return true;
+    }
 }

@@ -33,6 +33,7 @@ public abstract class Personnage {
 
     public abstract Capacite capacite(Personnage cible, Personnages cibles);
     public abstract boolean estMulticible();
+    public abstract boolean cibleEnnemis();
 
     public String getNom() {
         return nom;

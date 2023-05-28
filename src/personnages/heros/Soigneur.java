@@ -6,7 +6,6 @@ import personnages.capacite.Capacite;
 import personnages.capacite.CapaciteSoigneur;
 
 public class Soigneur extends Personnage {
-
     public Soigneur(String nom) {
         super(nom, 150, 150, 25, 60, 60, 50, 60, 60);
     }
@@ -19,6 +18,11 @@ public class Soigneur extends Personnage {
 
     @Override
     public boolean estMulticible() {
+        return false;
+    }
+
+    @Override
+    public boolean cibleEnnemis() {
         return false;
     }
 }

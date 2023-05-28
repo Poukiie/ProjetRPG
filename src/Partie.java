@@ -46,28 +46,33 @@ public class Partie {
                                 System.out.print("> ");
 
                                 int choix = Integer.parseInt(sc.nextLine());
-                                Personnage ennemiCible;
+                                Personnage cible;
                                 switch (choix) {
                                     // Attaquer un ennemi
                                     case 1:
-                                        ennemiCible = demanderCible();
-                                        heros.attaquer(ennemiCible);
+                                        cible = demanderCible(true);
+                                        heros.attaquer(cible);
 
                                         // Si l'ennemi est mort, le supprimer de la liste
-                                        if (ennemiCible.getPV() <= 0) {
-                                            ennemis.remove(ennemiCible);
+                                        if (cible.getPV() <= 0) {
+                                            ennemis.remove(cible);
                                         }
                                         break;
 
                                     // Utiliser la capacité spéciale
                                     case 2:
-                                        // Pour le mage et le tank, AoE dmg
+                                        // Pour le mage et le tank, capacité AoE
                                         if (heros.estMulticible())
-                                            heros.capacite(null, ennemis).utiliser();
+                                            if (heros.cibleEnnemis()) {
+                                                heros.capacite(null, ennemis).utiliser();
+                                            }
+                                            else {
+                                                heros.capacite(null, allies).utiliser();
+                                            }
                                         else {
-                                            // Pour les autres, choisir un ennemi
-                                            ennemiCible = demanderCible();
-                                            heros.capacite(ennemiCible, null).utiliser();
+                                            // Pour les autres, choisir une cible
+                                            cible = demanderCible(heros.cibleEnnemis());
+                                            heros.capacite(cible, null).utiliser();
                                         }
                                         break;
 
@@ -101,13 +106,15 @@ public class Partie {
         }
     }
 
-    private Personnage demanderCible() {
-        System.out.println("Quel ennemi souhaitez-vous attaquer ?");
-        System.out.println(ennemis);
-        // TODO vérifier saisie
+    private Personnage demanderCible(boolean cibleEnnemis) {
+        Personnages cibles = cibleEnnemis ? ennemis : allies;
+
+        // TODO Afficher une description de la capacité
+        System.out.println("Saisir le numéro de votre cible :");
+        System.out.println(cibles);
         System.out.print("> ");
         int indice = sc.nextInt();
-        while (!(indice >= 1 && indice <= ennemis.size())) {
+        while (!(indice >= 1 && indice <= cibles.size())) {
             System.out.println("Indice invalide : " + indice);
             System.out.println("Veuillez entrer un indice valide :\n" + "> ");
             indice = sc.nextInt();
@@ -115,6 +122,6 @@ public class Partie {
 
         int index = Integer.parseInt(sc.nextLine()) - 1;
 
-        return ennemis.get(index);
+        return cibles.get(index);
     }
 }
