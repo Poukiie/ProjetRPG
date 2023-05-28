@@ -137,6 +137,10 @@ public abstract class Personnage {
         return Math.max(diff, 0);
     }
 
+    public boolean estMort() {
+        return this.PV <= 0;
+    }
+
     @Override
     public String toString() {
         return getNom() + " (" + getPV() + "/" + getPVMax() + " PV)";
