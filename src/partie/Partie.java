@@ -47,7 +47,7 @@ public class Partie {
         System.out.println("-------- Tour de l'équipe --------");
         for (Personnage heros : allies) {
             // Vérifier que le heros n'est pas mort
-            if (heros.getPV() > 0) {
+            if (!heros.estMort()) {
                 System.out.println("Que doit faire " + heros.getNom() + " ?\n"
                         + "PV: " + heros.getPV() + "/" + heros.getPVMax() + "\n"
                         + "Energie: " + heros.getEnergie() + "/" + heros.getEnergieMax() + "\n"
