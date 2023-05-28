@@ -14,6 +14,7 @@ public class Partie {
     private int salleActuelle;
     private final Personnages ennemis;
     private final Scanner sc = new Scanner(System.in);
+    private static final int CHANCE_CAPACITE = 30;
 
     public Partie(Personnages allies, Donjon donjon) {
         this.allies = allies;
@@ -91,14 +92,24 @@ public class Partie {
                             // Attaquer un personnage aléatoire
                             int index = new Random().nextInt(allies.size());
                             Personnage cible = allies.get(index);
-                            // TODO: algorithme d'attaques pour l'ennemi
-                            ennemi.attaquer(cible);
-                            // Si le personnage est mort, le supprimer de la liste
-                            if (cible.getPV() <= 0) {
-                                allies.remove(cible);
+                            int roll = new Random().nextInt(100);
+
+                            // Capacité
+                            if (CHANCE_CAPACITE < roll) {
+                                ennemi.capacite(cible, allies).utiliser();
+                            }
+                            // Attaque normale sur un allié aléatoire
+                            else {
+                                ennemi.attaquer(cible);
+                            }
+
+                            // Si un personnage est mort, le supprimer de la liste
+                            for (Personnage p : allies) {
+                                if (p.getPV() <= 0) {
+                                    allies.remove(p);
+                                }
                             }
                         }
-
                     }
                 }
             }
