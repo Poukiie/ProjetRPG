@@ -1,4 +1,5 @@
 import donjon.Donjon;
+import partie.Partie;
 import personnages.heros.*;
 import personnages.*;
 
@@ -28,7 +29,7 @@ public class Appli {
                 case "2":
                     // Vérifier qu'il y a au moins un personnage
                     if (personnages.size() == 0) {
-                        System.out.println("Ca va être compliqué sans personnage... Créez-en un d'abord !\n" + "--------");
+                        System.out.println("Ça va être compliqué sans personnage... Créez-en un d'abord !\n" + "--------");
                         break;
                     }
                     // Afficher le menu de choix du donjon
@@ -37,16 +38,13 @@ public class Appli {
                     choisirEquipe(personnages, allies, sc);
                     // Lancer la partie
                     Partie partie = new Partie(allies, donjonChoisi);
-                    partie.lancerDonjon();
+                    partie.jouer();
                     break;
 
                 // 3. Voir mes personnages (compteur, nom - classe)
                 case "3":
                     System.out.println("Vous avez créé " + Personnage.getCounter() + " personnages en tout.\n" + "--------");
-
-                    for (Personnage p : personnages) {
-                        System.out.println(p.getNom() + " - " + p.getClass().getSimpleName());
-                    }
+                    System.out.println(personnages);
                     System.out.println("--------");
                     break;
 
@@ -145,10 +143,7 @@ public class Appli {
         System.out.println("Choisissez 3 personnages pour votre équipe :\n" + "--------");
 
         // Affichage des personnages
-        for(int i = 0; i < personnages.size(); i++) {
-            System.out.println(i + 1 + ". " + personnages.get(i).getNom() + " - "
-                    + personnages.get(i).getClass().getSimpleName());
-        }
+        System.out.println(personnages);
 
         // Choix des alliés
         System.out.print("Entrez les indices des personnages choisis, séparés par des espaces"
