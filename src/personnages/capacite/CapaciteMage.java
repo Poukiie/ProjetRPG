@@ -22,7 +22,6 @@ public class CapaciteMage implements Capacite {
             for (Personnage e : ennemis) {
                 int valeurAttaque = (this.mage.getATK() - e.getDEF()) / 2;
                 // Vérifier qu'on ne set pas les PV à un nb négatif
-                // TODO vérifier que c'est bien e.returnNewPVSoins ou mage.
                 int newPV = e.returnNewPV(valeurAttaque, e);
                 e.setPV(newPV);
                 System.out.println(this.mage.getNom() + " utilise sa magie et inflige " + valeurAttaque
@@ -32,5 +31,10 @@ public class CapaciteMage implements Capacite {
         }
 
         System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
     }
 }

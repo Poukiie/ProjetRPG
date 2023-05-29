@@ -63,7 +63,6 @@ public class Partie {
                 int choix = sc.nextInt();
                 Personnage cible;
                 switch (choix) {
-                    // TODO Créer une méthode pour chaque cas ? (pour alléger la méthode alliesAttaquent)
                     // Attaquer un ennemi
                     case 1:
                         cible = demanderCible(true, null);
@@ -88,6 +87,8 @@ public class Partie {
                             }
                         else {
                             // Pour les autres, choisir une cible
+                            // Affichage de la description de la capacité avant le choix
+                            System.out.println(heros.capacite(null, null).getDescription());
                             cible = demanderCible(heros.cibleEnnemis(), heros);
                             heros.capacite(cible, null).utiliser();
                         }
@@ -136,16 +137,6 @@ public class Partie {
 
     private Personnage demanderCible(boolean cibleEnnemis, Personnage heros) {
         Personnages cibles = cibleEnnemis ? ennemis : allies;
-
-        System.out.println(heros.capacite(...).getDescription());
-            case "Guerrier":
-                System.out.println(heros.getNom() + " s'apprête à attaquer sa cible deux fois de suite.");
-            case "Soigneur":
-                System.out.println("Qui souhaitez-vous soigner ? (Soins: 20% des PV max de "
-                        + heros.getNom() + ")");
-            case "Voleur":
-                System.out.println("A qui souhaitez-vous voler des PV ? (Vol: 20% des PV de la cible");
-        }
 
         System.out.println("Saisissez le numéro de votre cible :");
         System.out.print(cibles);

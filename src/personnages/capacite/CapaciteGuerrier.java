@@ -22,4 +22,9 @@ public class CapaciteGuerrier implements Capacite {
         }
         System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
     }
+
+    @Override
+    public String getDescription() {
+        return guerrier.getNom() + " s'apprête à attaquer sa cible deux fois de suite.";
+    }
 }
