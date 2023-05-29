@@ -86,6 +86,10 @@ public abstract class Personnage {
         return counter;
     }
 
+    public String getClassName() {
+        return getClass().getSimpleName();
+    }
+
     // Roll un nombre entre 1 et 100
     // Stat précision : si roll <= stat, alors attaque réussie
     // Stat esquive : si roll <= stat, alors attaque esquivée
@@ -108,18 +112,18 @@ public abstract class Personnage {
                     newPV = returnNewPV(valeurAttaque, p);
                     p.setPV(newPV);
                     System.out.println(this.nom + " inflige " + valeurAttaque + " dégâts à " + p.getNom()
-                            + " (" + newPV + "/" + p.getPVMax() + "PV)");
+                            + " (" + newPV + "/" + p.getPVMax() + "PV)\n" + "--------");
                     return;
                 }
                 else {
                     System.out.println(p.getNom() + " a esquivé l'attaque de " + this.nom + " ("
-                            + p.getPV() + "/" + p.getPVMax() + "PV)");
+                            + p.getPV() + "/" + p.getPVMax() + "PV)\n" + "--------");
                     return;
                 }
             }
             else {
                 System.out.println(this.nom + " a raté son attaque sur " + p.getNom() + " ("
-                        + p.getPV() + "/" + p.getPVMax() + "PV)");
+                        + p.getPV() + "/" + p.getPVMax() + "PV)\n" + "--------");
                 return;
             }
         }
@@ -129,12 +133,17 @@ public abstract class Personnage {
         newPV = returnNewPV(valeurAttaque, p);
         p.setPV(newPV);
         System.out.println(this.nom + " n'inflige que " + valeurAttaque + " dégâts à " + p.getNom()
-                + " (" + newPV + "/" + p.getPVMax() + "PV)");
+                + " (" + newPV + "/" + p.getPVMax() + "PV)\n" + "--------");
     }
 
-    private int returnNewPV(int valeurAttaque, Personnage p) {
+    public int returnNewPV(int valeurAttaque, Personnage p) {
         int diff = p.getPV() - valeurAttaque;
         return Math.max(diff, 0);
+    }
+
+    public int returnNewPVSupp(int pvRestaures, Personnage p) {
+        int diff = p.getPV() + pvRestaures;
+        return Math.max(diff, p.getPVMax());
     }
 
     public boolean estMort() {

@@ -7,7 +7,7 @@ import personnages.capacite.CapaciteMage;
 
 public class Mage extends Personnage {
     public Mage(String nom) {
-        super(nom, 100, 100, 70, 50, 80, 50, 70, 70);
+        super(nom, 100, 100, 70, 55, 80, 40, 60, 60);
     }
 
     // Capacité: attaquer tous les ennemis en même temps (valeurAttaque / 2)
@@ -28,6 +28,6 @@ public class Mage extends Personnage {
 
     @Override
     public String toString() {
-        return super.toString() + " - " + getClass().getSimpleName();
+        return super.toString() + " - " + getClassName();
     }
 }

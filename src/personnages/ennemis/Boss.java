@@ -7,7 +7,7 @@ import personnages.capacite.CapaciteMage;
 
 public class Boss extends Personnage {
     public Boss(String nom) {
-        super(nom, 400, 400, 100, 80, 75, 60, 50, 50);
+        super(nom, 250, 250, 80, 70, 75, 60, 50, 50);
     }
 
     @Override

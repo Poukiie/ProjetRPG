@@ -15,12 +15,15 @@ public class CapaciteSoigneur implements Capacite {
     public void utiliser() {
         int energie = this.soigneur.getEnergie();
 
-        if (energie < 10) {
-            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
-            return;
+        if (energie >= 10) {
+            this.soigneur.setEnergie(energie - 10);
+            int pvRestaures = (int) (this.cible.getPVMax() * 0.2);
+            // Vérifier qu'on ne dépasse pas les PV max
+            // TODO vérifier que c'est bien cible.returnNewPVSoins ou soigneur.
+            int newPV = this.cible.returnNewPVSupp(pvRestaures, this.cible);
+            System.out.println(this.soigneur.getNom() + " restaure " + pvRestaures + " PV à " + this.cible.getNom()
+                    + " (" + newPV + "/" + this.cible.getPVMax() + "PV)\n" + "--------");
         }
-        this.soigneur.setEnergie(energie - 10);
-        int pvRestaures = (int) (cible.getPVMax() * 0.2);
-        cible.setPV(cible.getPV() + pvRestaures);
+        System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
     }
 }

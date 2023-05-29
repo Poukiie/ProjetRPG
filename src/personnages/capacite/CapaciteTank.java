@@ -16,16 +16,15 @@ public class CapaciteTank implements Capacite {
     public void utiliser() {
         int energie = this.tank.getEnergie();
 
-        if (energie < 10) {
-            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
-            return;
+        if (energie >= 10) {
+            this.tank.setEnergie(energie - 10);
+            this.tank.setEsquive(100);
+            for (Personnage p : allies)
+                p.setEsquive(100);
+            System.out.println(this.tank.getNom() + " crée un bouclier pour tous vos alliés.\n --------");
+            // TODO: gérer le tour suivant pour remettre l'esquive à la normale
         }
+        System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
 
-        this.tank.setEnergie(energie - 10);
-        this.tank.setEsquive(100);
-        for (Personnage p : allies)
-            p.setEsquive(100);
-
-        // TODO: gérer le tour suivant pour remettre l'esquive à la normale
     }
 }

@@ -4,7 +4,9 @@ import donjon.Donjon;
 import donjon.Salle;
 import personnages.Personnage;
 import personnages.Personnages;
+import recompenses.Consommable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
@@ -15,6 +17,7 @@ public class Partie {
     private final List<Salle> salles;
     private int salleActuelle;
     private final Personnages ennemis;
+    private final List<Consommable> objets = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
     private static final int CHANCE_CAPACITE = 30;
 
@@ -57,16 +60,18 @@ public class Partie {
                         + "3. Utiliser un objet");
                 System.out.print("> ");
 
-                int choix = Integer.parseInt(sc.nextLine());
+                int choix = sc.nextInt();
                 Personnage cible;
                 switch (choix) {
+                    // TODO Créer une méthode pour chaque cas ? (pour alléger la méthode alliesAttaquent)
                     // Attaquer un ennemi
                     case 1:
-                        cible = demanderCible(true);
+                        cible = demanderCible(true, null);
                         heros.attaquer(cible);
 
                         // Si l'ennemi est mort, le supprimer de la liste
                         if (cible.getPV() <= 0) {
+                            System.out.println(cible.getNom() + " est éliminé !");
                             ennemis.remove(cible);
                         }
                         break;
@@ -83,7 +88,7 @@ public class Partie {
                             }
                         else {
                             // Pour les autres, choisir une cible
-                            cible = demanderCible(heros.cibleEnnemis());
+                            cible = demanderCible(heros.cibleEnnemis(), heros);
                             heros.capacite(cible, null).utiliser();
                         }
                         break;
@@ -91,7 +96,12 @@ public class Partie {
                     // Utiliser un objet
                     case 3:
                         // TODO: utiliser un objet
-                        System.out.println("Quel objet voulez-vous utiliser ?");
+                        if (objets.isEmpty()) {
+                            System.out.println("Vous n'avez aucun objet dans votre inventaire.");
+                        }
+                        else {
+                            System.out.println("Quel objet voulez-vous utiliser ?");
+                        }
                         break;
                 }
             }
@@ -117,27 +127,37 @@ public class Partie {
 
             for (Personnage p : allies) {
                 if (p.estMort()) {
+                    System.out.println(p.getNom() + " est éliminé :(");
                     allies.remove(p);
                 }
             }
         }
     }
 
-    private Personnage demanderCible(boolean cibleEnnemis) {
+    private Personnage demanderCible(boolean cibleEnnemis, Personnage heros) {
         Personnages cibles = cibleEnnemis ? ennemis : allies;
 
-        // TODO Afficher une description de la capacité
-        System.out.println("Saisir le numéro de votre cible :");
-        System.out.println(cibles);
+        switch(heros.getClassName()) {
+            case "Guerrier":
+                System.out.println(heros.getNom() + " s'apprête à attaquer sa cible deux fois de suite.");
+            case "Soigneur":
+                System.out.println("Qui souhaitez-vous soigner ? (Soins: 20% des PV max de "
+                        + heros.getNom() + ")");
+            case "Voleur":
+                System.out.println("A qui souhaitez-vous voler des PV ? (Vol: 20% des PV de la cible");
+        }
+
+        System.out.println("Saisissez le numéro de votre cible :");
+        System.out.print(cibles);
         System.out.print("> ");
         int indice = sc.nextInt();
         while (!(indice >= 1 && indice <= cibles.size())) {
             System.out.println("Indice invalide : " + indice);
-            System.out.println("Veuillez entrer un indice valide :\n" + "> ");
+            System.out.print("Veuillez entrer un indice valide :\n" + "> ");
             indice = sc.nextInt();
         }
 
-        int index = Integer.parseInt(sc.nextLine()) - 1;
+        int index = indice - 1;
 
         return cibles.get(index);
     }
