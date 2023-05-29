@@ -15,13 +15,11 @@ public class CapaciteGuerrier implements Capacite {
     public void utiliser() {
         int energie = this.guerrier.getEnergie();
 
-        if (energie < 10) {
-            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
-            return;
+        if (energie >= 10) {
+            this.guerrier.setEnergie(energie - 10);
+            this.guerrier.attaquer(ennemi);
+            this.guerrier.attaquer(ennemi);
         }
-
-        this.guerrier.setEnergie(energie - 10);
-        this.guerrier.attaquer(ennemi);
-        this.guerrier.attaquer(ennemi);
+        System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
     }
 }

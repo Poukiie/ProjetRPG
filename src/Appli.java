@@ -99,7 +99,7 @@ public class Appli {
         }
 
         personnages.add(p);
-        System.out.println("Personnage créé : " + nom + " - " + p.getClass().getSimpleName() + "\n" +
+        System.out.println("Personnage créé : " + nom + " - " + p.getClassName() + "\n" +
                 "PV: " + p.getPV() + "\n" + "Energie: " + p.getEnergie() + "\n" + "ATK: " + p.getATK() + "\n"
                 + "DEF: " + p.getDEF() + "\n" + "Précision: " + p.getPrecision() + "\n"
                 + "Esquive: " + p.getEsquive() + "\n--------"
@@ -159,7 +159,7 @@ public class Appli {
             // Vérifier que l'indice est valide
             while (!(indice >= 1 && indice <= personnages.size())) {
                 System.out.println("Indice invalide : " + indice);
-                System.out.println("Veuillez entrer un indice valide :\n" + "> ");
+                System.out.print("Veuillez entrer un indice valide :\n" + "> ");
                 indice = sc.nextInt();
             }
             // On affiche à partir de 1 mais le perso est en fait à l'indice i - 1
