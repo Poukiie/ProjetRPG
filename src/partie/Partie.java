@@ -137,7 +137,7 @@ public class Partie {
     private Personnage demanderCible(boolean cibleEnnemis, Personnage heros) {
         Personnages cibles = cibleEnnemis ? ennemis : allies;
 
-        switch(heros.getClassName()) {
+        System.out.println(heros.capacite(...).getDescription());
             case "Guerrier":
                 System.out.println(heros.getNom() + " s'apprête à attaquer sa cible deux fois de suite.");
             case "Soigneur":
