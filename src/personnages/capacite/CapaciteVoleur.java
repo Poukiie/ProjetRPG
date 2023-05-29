@@ -29,8 +29,9 @@ public class CapaciteVoleur implements Capacite {
                     + " (" + newPVEnnemi + "/" + ennemi.getPVMax() + "PV)");
             System.out.println(this.voleur.getNom() + " (" + newPVVoleur + "/" + this.voleur.getPVMax() + "PV)");
         }
-
-        System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+        else {
+            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+        }
     }
 
     @Override

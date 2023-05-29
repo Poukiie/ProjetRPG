@@ -6,7 +6,7 @@ import personnages.*;
 import java.util.Scanner;
 
 public class Appli {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         String input;
         Personnages personnages = new Personnages();
@@ -140,7 +140,7 @@ public class Appli {
     /**
      * Affiche le menu pour choisir l'équipe de 3 personnages
      */
-    private static void choisirEquipe(Personnages personnages, Personnages allies, Scanner sc) {
+    private static void choisirEquipe(Personnages personnages, Personnages allies, Scanner sc) throws InterruptedException {
         System.out.println("Choisissez 3 personnages pour votre équipe :\n" + "--------");
 
         // Affichage des personnages
@@ -168,11 +168,7 @@ public class Appli {
             System.out.println(choisi.getNom() + " a rejoint votre équipe !");
         }
         System.out.println(">>> Votre équipe est prête ! Lancement du donjon........");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
 
         // "Clear" console
         for (int i = 0; i < 30; ++i) System.out.println();

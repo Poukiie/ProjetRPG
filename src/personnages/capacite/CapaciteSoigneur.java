@@ -20,10 +20,13 @@ public class CapaciteSoigneur implements Capacite {
             int pvRestaures = (int) (this.cible.getPVMax() * 0.2);
             // Vérifier qu'on ne dépasse pas les PV max
             int newPV = this.cible.returnNewPVSupp(pvRestaures, this.cible);
+            this.cible.setPV(newPV);
             System.out.println(this.soigneur.getNom() + " restaure " + pvRestaures + " PV à " + this.cible.getNom()
                     + " (" + newPV + "/" + this.cible.getPVMax() + "PV)\n" + "--------");
         }
-        System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+        else {
+            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+        }
     }
 
     @Override

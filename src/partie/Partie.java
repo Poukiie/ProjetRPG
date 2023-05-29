@@ -13,6 +13,8 @@ import java.util.Random;
 
 public class Partie {
     private final Personnages allies;
+    // Pour les stocker qq part en cas de réanimation plus tard?
+    private final Personnages alliesMorts = new Personnages();
     private final Donjon donjon;
     private final List<Salle> salles;
     private int salleActuelle;
@@ -29,7 +31,7 @@ public class Partie {
         this.ennemis = salles.get(salleActuelle).getEnnemis();
     }
 
-    public void jouer() {
+    public void jouer() throws InterruptedException {
         while (!donjon.isCompleted(salleActuelle)) {
             System.out.println("-------- Salle " + salleActuelle + " --------");
             while (!salles.get(salleActuelle - 1).isCompleted()) {
@@ -38,17 +40,27 @@ public class Partie {
                     // Tant que l'équipe n'a pas tué tous les ennemis
                     while (ennemis.size() > 0) {
                         alliesAttaquent();
+                        Thread.sleep(2000);
+                        if (ennemis.size() == 0) {
+                            break;
+                        }
                         ennemisAttaquent();
+                        Thread.sleep(2000);
                     }
                 }
             }
+            System.out.println(">>> Victoire ! Salle " + salleActuelle + " terminée ! <<<\n");
             salleActuelle++;
+            // TODO Gérer les récompenses
         }
     }
 
     private void alliesAttaquent() {
-        System.out.println("-------- Tour de l'équipe --------");
+        System.out.println("\n-------- Tour de l'équipe --------");
         for (Personnage heros : allies) {
+            if (ennemis.size() == 0) {
+                break;
+            }
             // Vérifier que le heros n'est pas mort
             if (!heros.estMort()) {
                 System.out.println("Que doit faire " + heros.getNom() + " ?\n"
@@ -65,32 +77,34 @@ public class Partie {
                 switch (choix) {
                     // Attaquer un ennemi
                     case 1:
-                        cible = demanderCible(true, null);
+                        cible = demanderCible(true);
                         heros.attaquer(cible);
 
                         // Si l'ennemi est mort, le supprimer de la liste
-                        if (cible.getPV() <= 0) {
-                            System.out.println(cible.getNom() + " est éliminé !");
-                            ennemis.remove(cible);
-                        }
+                        ennemiMort(cible);
                         break;
 
                     // Utiliser la capacité spéciale
                     case 2:
                         // Pour le mage et le tank, capacité AoE
-                        if (heros.estMulticible())
+                        if (heros.estMulticible()) {
                             if (heros.cibleEnnemis()) {
                                 heros.capacite(null, ennemis).utiliser();
-                            }
-                            else {
+                                // Vérifier si les ennemis sont morts
+                                for (Personnage ennemi : ennemis) {
+                                    ennemiMort(ennemi);
+                                }
+                            } else {
                                 heros.capacite(null, allies).utiliser();
                             }
+                        }
                         else {
                             // Pour les autres, choisir une cible
                             // Affichage de la description de la capacité avant le choix
                             System.out.println(heros.capacite(null, null).getDescription());
-                            cible = demanderCible(heros.cibleEnnemis(), heros);
+                            cible = demanderCible(heros.cibleEnnemis());
                             heros.capacite(cible, null).utiliser();
+                            ennemiMort(cible);
                         }
                         break;
 
@@ -110,8 +124,12 @@ public class Partie {
     }
 
     private void ennemisAttaquent() {
-        System.out.println("-------- Tour des ennemis --------");
+        System.out.println("\n-------- Tour des ennemis --------");
         for (Personnage ennemi : ennemis) {
+            // Entre temps si tous les allies sont morts on arrête
+            if (allies.size() == 0) {
+                break;
+            }
             // Allié aléatoire pour les attaques monocibles
             int index = new Random().nextInt(allies.size());
             Personnage cible = allies.get(index);
@@ -128,14 +146,14 @@ public class Partie {
 
             for (Personnage p : allies) {
                 if (p.estMort()) {
-                    System.out.println(p.getNom() + " est éliminé :(");
+                    System.out.println(">>> " + p.getNom() + " est éliminé :(\n--------");
                     allies.remove(p);
                 }
             }
         }
     }
 
-    private Personnage demanderCible(boolean cibleEnnemis, Personnage heros) {
+    private Personnage demanderCible(boolean cibleEnnemis) {
         Personnages cibles = cibleEnnemis ? ennemis : allies;
 
         System.out.println("Saisissez le numéro de votre cible :");
@@ -151,5 +169,12 @@ public class Partie {
         int index = indice - 1;
 
         return cibles.get(index);
+    }
+
+    private void ennemiMort(Personnage ennemi) {
+        if (ennemi.getPV() <= 0) {
+            System.out.println(">>> " + ennemi.getNom() + " est éliminé !\n--------");
+            ennemis.remove(ennemi);
+        }
     }
 }

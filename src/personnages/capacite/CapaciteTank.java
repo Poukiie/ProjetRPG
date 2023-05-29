@@ -24,7 +24,9 @@ public class CapaciteTank implements Capacite {
             System.out.println(this.tank.getNom() + " crée un bouclier pour tous vos alliés.\n --------");
             // TODO: gérer le tour suivant pour remettre l'esquive à la normale (variable tmp)
         }
-        System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+        else {
+            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+        }
     }
 
     @Override
