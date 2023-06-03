@@ -15,7 +15,7 @@ public class Partie {
     private final Donjon donjon;
     private final List<Salle> salles;
     private int salleActuelle;
-    private final Personnages ennemis;
+    private Personnages ennemis;
     private final List<Consommable> objets = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
     private static final int CHANCE_CAPACITE = 30;
@@ -25,14 +25,15 @@ public class Partie {
         this.donjon = donjon;
         this.salles = donjon.getSalles();
         this.salleActuelle = 1;
-        this.ennemis = salles.get(salleActuelle).getEnnemis();
     }
 
     public void jouer() throws InterruptedException {
         while (!donjon.isCompleted(salleActuelle)) {
             System.out.println("-------- Salle " + salleActuelle + " --------");
+            this.ennemis = salles.get(salleActuelle - 1).getEnnemis();
+
             // Tant que l'équipe n'est pas morte et que la salle n'est pas terminée
-            while ((allies.size() > 0) && (!salles.get(salleActuelle - 1).isCompleted())) {
+            while ((!allies.isEmpty()) && (!ennemis.isEmpty())) {
                 // Tant que l'équipe n'a pas tué tous les ennemis
                  alliesAttaquent();
                  Thread.sleep(2000);
@@ -41,6 +42,8 @@ public class Partie {
                     Thread.sleep(2000);
                 }
             }
+
+            salles.get(salleActuelle - 1).setCompleted(true);
             System.out.println(">>> Victoire ! Salle " + salleActuelle + " terminée ! <<<\n");
             salleActuelle++;
             // TODO Gérer les récompenses
@@ -50,9 +53,8 @@ public class Partie {
     private void alliesAttaquent() {
         System.out.println("\n-------- Tour de l'équipe --------");
         for (Personnage heros : allies) {
-            if (ennemis.size() == 0) {
-                break;
-            }
+            if (ennemis.isEmpty()) return;
+
             // Vérifier que le heros n'est pas mort
             if (!heros.estMort()) {
                 System.out.println("Que doit faire " + heros.getNom() + " ?\n"
