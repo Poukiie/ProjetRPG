@@ -31,19 +31,14 @@ public class Partie {
     public void jouer() throws InterruptedException {
         while (!donjon.isCompleted(salleActuelle)) {
             System.out.println("-------- Salle " + salleActuelle + " --------");
-            while (!salles.get(salleActuelle - 1).isCompleted()) {
-                // Tant que l'équipe n'est pas morte
-                while (allies.size() > 0) {
-                    // Tant que l'équipe n'a pas tué tous les ennemis
-                    while (ennemis.size() > 0) {
-                        alliesAttaquent();
-                        Thread.sleep(2000);
-                        if (ennemis.size() == 0) {
-                            break;
-                        }
-                        ennemisAttaquent();
-                        Thread.sleep(2000);
-                    }
+            // Tant que l'équipe n'est pas morte et que la salle n'est pas terminée
+            while ((allies.size() > 0) && (!salles.get(salleActuelle - 1).isCompleted())) {
+                // Tant que l'équipe n'a pas tué tous les ennemis
+                 alliesAttaquent();
+                 Thread.sleep(2000);
+                if (!(ennemis.isEmpty())) {
+                    ennemisAttaquent();
+                    Thread.sleep(2000);
                 }
             }
             System.out.println(">>> Victoire ! Salle " + salleActuelle + " terminée ! <<<\n");

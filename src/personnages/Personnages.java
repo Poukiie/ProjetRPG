@@ -27,6 +27,10 @@ public class Personnages implements Iterable<Personnage> {
         return this.personnages.size();
     }
 
+    public boolean isEmpty() {
+        return this.personnages.isEmpty();
+    }
+
     /**
      * Permet de boucler sur la liste de cette classe avec un foreach
      */
