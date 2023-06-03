@@ -6,10 +6,7 @@ import personnages.Personnage;
 import personnages.Personnages;
 import recompenses.Consommable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;
 
 public class Partie {
     private final Personnages allies;
@@ -81,7 +78,10 @@ public class Partie {
                         heros.attaquer(cible);
 
                         // Si l'ennemi est mort, le supprimer de la liste
-                        ennemiMort(cible);
+                        if (cible.estMort()) {
+                            System.out.println(">>> " + cible.getNom() + " est éliminé !\n--------");
+                            ennemis.remove(cible);
+                        }
                         break;
 
                     // Utiliser la capacité spéciale
@@ -91,8 +91,16 @@ public class Partie {
                             if (heros.cibleEnnemis()) {
                                 heros.capacite(null, ennemis).utiliser();
                                 // Vérifier si les ennemis sont morts
-                                for (Personnage ennemi : ennemis) {
-                                    ennemiMort(ennemi);
+                                // Iterator sur ennemis pour éviter ConcurrentModificationException
+                                Iterator<Personnage> iterator = ennemis.iterator();
+                                // Boucler sur les ennemis tant qu'il y en a encore
+                                while (iterator.hasNext()) {
+                                    Personnage ennemi = iterator.next();
+                                    // Et les supprimer de la liste s'ils sont morts
+                                    if (ennemi.estMort()) {
+                                        System.out.println(">>> " + ennemi.getNom() + " est éliminé !\n--------");
+                                        iterator.remove();
+                                    }
                                 }
                             } else {
                                 heros.capacite(null, allies).utiliser();
@@ -104,7 +112,10 @@ public class Partie {
                             System.out.println(heros.capacite(null, null).getDescription());
                             cible = demanderCible(heros.cibleEnnemis());
                             heros.capacite(cible, null).utiliser();
-                            ennemiMort(cible);
+                            if (cible.estMort()) {
+                                System.out.println(">>> " + cible.getNom() + " est éliminé !\n--------");
+                                ennemis.remove(cible);
+                            }
                         }
                         break;
 
@@ -169,12 +180,5 @@ public class Partie {
         int index = indice - 1;
 
         return cibles.get(index);
-    }
-
-    private void ennemiMort(Personnage ennemi) {
-        if (ennemi.getPV() <= 0) {
-            System.out.println(">>> " + ennemi.getNom() + " est éliminé !\n--------");
-            ennemis.remove(ennemi);
-        }
     }
 }
