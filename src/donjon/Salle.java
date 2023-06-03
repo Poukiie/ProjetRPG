@@ -7,7 +7,6 @@ import personnages.Personnages;
 
 public class Salle {
     private final Personnages ennemis = new Personnages();
-    private boolean completed = false;
 
     public Salle(int numSalle, int numDonjon) {
         // Créer une liste de 4 ou 5 blobs
@@ -34,11 +33,7 @@ public class Salle {
     }
 
     public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+        return ennemis.isEmpty();
     }
 
     public Personnages getEnnemis() {

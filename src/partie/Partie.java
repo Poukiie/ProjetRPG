@@ -33,7 +33,7 @@ public class Partie {
             this.ennemis = salles.get(salleActuelle - 1).getEnnemis();
 
             // Tant que l'équipe n'est pas morte et que la salle n'est pas terminée
-            while ((!allies.isEmpty()) && (!ennemis.isEmpty())) {
+            while ((!allies.isEmpty()) && (!salles.get(salleActuelle - 1).isCompleted())) {
                 // Tant que l'équipe n'a pas tué tous les ennemis
                  alliesAttaquent();
                  Thread.sleep(2000);
@@ -43,7 +43,6 @@ public class Partie {
                 }
             }
 
-            salles.get(salleActuelle - 1).setCompleted(true);
             System.out.println(">>> Victoire ! Salle " + salleActuelle + " terminée ! <<<\n");
             salleActuelle++;
             // TODO Gérer les récompenses
