@@ -7,7 +7,7 @@ import personnages.capacite.CapaciteBlob;
 
 public class Blob extends Personnage {
     public Blob(String nom) {
-        super(nom, 55, 55, 70, 30, 70, 5, 0, 0);
+        super(nom, 55, 55, 70, 30, 70, 5, 5, 0, 0);
     }
 
     @Override

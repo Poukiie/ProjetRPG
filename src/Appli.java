@@ -66,6 +66,7 @@ public class Appli {
                             }
                         }
                     }
+                    System.out.println(">>> Bravo! Vous avez terminé le jeu ! <<<\n");
                     break;
 
                 // 3. Voir mes personnages (compteur, nom - classe)

@@ -44,6 +44,7 @@ public class Partie {
                     ennemisAttaquent();
                     Thread.sleep(2000);
                 }
+                reinitialiserEsquive(allies);
             }
 
             if (allies.isEmpty()) {
@@ -201,5 +202,11 @@ public class Partie {
         int index = indice - 1;
 
         return cibles.get(index);
+    }
+
+    private void reinitialiserEsquive(Personnages allies) {
+        for (Personnage p : allies) {
+            p.setEsquive(p.getEsquiveMax());
+        }
     }
 }

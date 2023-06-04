@@ -13,11 +13,12 @@ public abstract class Personnage {
     private final int DEF;
     private final int precision;
     private int esquive;
+    private int esquiveMax;
     private int energie; // pour utiliser des capacités
     private final int energieMax;
     private static int counter = 0;
 
-    public Personnage(String nom, int pv, int pvMax, int atq, int def, int precision, int esquive, int energie, int energieMax) {
+    public Personnage(String nom, int pv, int pvMax, int atq, int def, int precision, int esquive, int esquiveMax, int energie, int energieMax) {
         this.nom = nom;
         this.PV = pv;
         this.PVMax = pvMax;
@@ -25,6 +26,7 @@ public abstract class Personnage {
         this.DEF = def;
         this.precision = precision;
         this.esquive = esquive;
+        this.esquiveMax = esquiveMax;
         this.energie = energie;
         this.energieMax = energieMax;
         Personnage.counter += 1;
@@ -68,6 +70,10 @@ public abstract class Personnage {
 
     public void setEsquive(int esquive) {
         this.esquive = esquive;
+    }
+
+    public int getEsquiveMax() {
+        return esquiveMax;
     }
 
     public int getEnergie() {

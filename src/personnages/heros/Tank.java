@@ -7,7 +7,7 @@ import personnages.capacite.CapaciteTank;
 
 public class Tank extends Personnage {
     public Tank(String nom) {
-        super(nom, 185, 185, 45, 90, 40, 50, 30, 30);
+        super(nom, 185, 185, 45, 90, 40, 50, 50, 30, 30);
     }
 
     // Capacité bouclier : Son esquive passe à 100 et celle de ses alliés à 100 aussi pendant 1 tour

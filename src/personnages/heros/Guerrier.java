@@ -7,7 +7,7 @@ import personnages.capacite.CapaciteGuerrier;
 
 public class Guerrier extends Personnage {
     public Guerrier(String nom) {
-        super(nom, 90, 90, 80, 40, 85, 30, 30, 30);
+        super(nom, 90, 90, 80, 40, 85, 30, 30, 30, 30);
     }
 
     // Capacité: attaquer deux fois de suite
