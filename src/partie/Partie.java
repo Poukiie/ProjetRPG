@@ -58,6 +58,9 @@ public class Partie {
                 }
 
                 // TODO Gérer les récompenses
+                // créer deux objets aléatoires
+                // les ajouter à la liste des objets
+//                Objet o1 = new Objet();
             }
         }
         System.out.println(">>> Donjon terminé ! <<<\n");
@@ -158,6 +161,10 @@ public class Partie {
 
             // Capacité
             if (CHANCE_CAPACITE < roll) {
+                if (ennemi.getEnergie() <= 0) {
+                    ennemi.attaquer(cible);
+                    continue;
+                }
                 ennemi.capacite(cible, allies).utiliser();
             }
             // Attaque normale

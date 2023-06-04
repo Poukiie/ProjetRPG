@@ -185,6 +185,10 @@ public class Appli {
             }
             // On affiche à partir de 1 mais le perso est en fait à l'indice i - 1
             Personnage choisi = personnages.get(indice - 1);
+            if (choisi.getPV() == 0) {
+                System.out.println(choisi.getNom() + " est mort, vous ne pouvez pas le choisir.");
+                continue;
+            }
             allies.add(choisi);
             System.out.println(choisi.getNom() + " a rejoint votre équipe !");
         }
