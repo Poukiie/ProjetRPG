@@ -4,7 +4,7 @@ import donjon.Donjon;
 import donjon.Salle;
 import personnages.Personnage;
 import personnages.Personnages;
-import recompenses.Consommable;
+import recompenses.Objet;
 
 import java.util.*;
 
@@ -16,7 +16,7 @@ public class Partie {
     private final List<Salle> salles;
     private int salleActuelle;
     private Personnages ennemis;
-    private final List<Consommable> objets = new ArrayList<>();
+    private final List<Objet> objets = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
     private static final int CHANCE_CAPACITE = 30;
 
@@ -46,14 +46,20 @@ public class Partie {
                 }
             }
 
-            System.out.println(">>> Victoire ! Salle " + (salleActuelle + 1) + " terminée ! <<<\n");
-            if (salleActuelle < 2) {
-                salleActuelle++;
+            if (allies.isEmpty()) {
+                System.out.println(">>> Défaite... <<<\n");
+                return;
             }
+            else {
+                System.out.println(">>> Victoire ! Salle " + (salleActuelle + 1) + " terminée ! <<<\n");
+                if (salleActuelle < 2) {
+                    salleActuelle++;
+                }
 
-            // TODO Gérer les récompenses
+                // TODO Gérer les récompenses
+            }
         }
-        System.out.println(">>> Donjon terminé ! <<<");
+        System.out.println(">>> Donjon terminé ! <<<\n");
     }
 
     private void alliesAttaquent() {

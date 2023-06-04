@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Donjon {
-    private final String nomDonjon;
+    private String nomDonjon;
     private final int numDonjon;
+    private boolean completed = false;
     private final List<Salle> salles = new ArrayList<>();
 
     public Donjon(String nomDonjon, int numDonjon) {
@@ -24,8 +25,20 @@ public class Donjon {
         return numDonjon;
     }
 
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
     public String getNomDonjon() {
         return nomDonjon;
+    }
+
+    public void setNomDonjon(String nomDonjon) {
+        this.nomDonjon = nomDonjon;
     }
 
     public boolean isCompleted(int salleActuelle) {

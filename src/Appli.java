@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class Appli {
     public static void main(String[] args) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
@@ -43,23 +45,27 @@ public class Appli {
                         break;
                     }
                     // Tant que tous les donjons ne sont pas faits
-                    // Iterator sur donjons pour boucler dessus
-                    Iterator<Donjon> iterator = donjons.iterator();
-                    while(iterator.hasNext()) {
-                        Donjon d = iterator.next();
-                        // Afficher le menu de choix du donjon
-                        Donjon donjonChoisi = showDonjons(sc, donjons);
-                        // Choix de l'équipe de 3 personnages pour le donjon
-                        choisirEquipe(personnages, allies, sc);
-                        // Lancer la partie
-                        Partie partie = new Partie(allies, donjonChoisi);
-                        partie.jouer();
-                        // Réinitialiser l'équipe
-                        allies.clear();
-                        // Supprimer le donjon fini de la liste
-                        donjons.remove(d);
+                    for (Donjon d : donjons) {
+                        while (!d.isCompleted()) {
+                            // Afficher le menu de choix du donjon
+                            Donjon donjonChoisi = showDonjons(sc, donjons);
+                            // Choix de l'équipe de 3 personnages pour le donjon
+                            choisirEquipe(personnages, allies, sc);
+                            // Lancer la partie
+                            Partie partie = new Partie(allies, donjonChoisi);
+                            partie.jouer();
+                            if (!allies.isEmpty()) {
+                                d.setCompleted(true);
+                                d.setNomDonjon(donjonChoisi.getNomDonjon() + " (terminé)");
+                                // Réinitialiser l'équipe
+                                allies.clear();
+                            }
+                            else {
+                                System.out.println(">>> GAME OVER <<<\n");
+                                exit(0);
+                            }
+                        }
                     }
-
                     break;
 
                 // 3. Voir mes personnages (compteur, nom - classe)

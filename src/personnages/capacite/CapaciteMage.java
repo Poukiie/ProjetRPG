@@ -41,7 +41,7 @@ public class CapaciteMage implements Capacite {
             System.out.println("--------");
         }
         else {
-            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+            System.out.println("Pas assez d'énergie pour utiliser la capacité spéciale.");
         }
     }
 
