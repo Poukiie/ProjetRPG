@@ -33,7 +33,7 @@ public class Salle {
     }
 
     public boolean isCompleted() {
-        return ennemis.size() == 0;
+        return ennemis.isEmpty();
     }
 
     public Personnages getEnnemis() {

@@ -16,4 +16,9 @@ public class CapaciteBlob implements Capacite {
     public void utiliser() {
         blob.attaquer(allie);
     }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
 }

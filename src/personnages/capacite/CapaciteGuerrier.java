@@ -20,6 +20,13 @@ public class CapaciteGuerrier implements Capacite {
             this.guerrier.attaquer(ennemi);
             this.guerrier.attaquer(ennemi);
         }
-        System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+        else {
+            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+        }
+    }
+
+    @Override
+    public String getDescription() {
+        return guerrier.getNom() + " s'apprête à attaquer sa cible deux fois de suite.";
     }
 }

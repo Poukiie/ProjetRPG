@@ -7,7 +7,7 @@ import personnages.capacite.CapaciteSoigneur;
 
 public class Soigneur extends Personnage {
     public Soigneur(String nom) {
-        super(nom, 150, 150, 25, 65, 60, 45, 50, 50);
+        super(nom, 150, 150, 25, 65, 60, 50, 50, 50);
     }
 
     // Capacité de soin (choix d'UN perso à heal, restaure selon 20% des PV max du healer)

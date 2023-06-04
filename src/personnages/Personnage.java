@@ -143,7 +143,7 @@ public abstract class Personnage {
 
     public int returnNewPVSupp(int pvRestaures, Personnage p) {
         int diff = p.getPV() + pvRestaures;
-        return Math.max(diff, p.getPVMax());
+        return Math.min(diff, p.getPVMax());
     }
 
     public boolean estMort() {

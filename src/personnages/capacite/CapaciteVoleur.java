@@ -18,8 +18,9 @@ public class CapaciteVoleur implements Capacite {
         if (energie >= 10) {
             this.voleur.setEnergie(energie - 10);
             int pvVoles = (int) (ennemi.getPV() * 0.2);
-            // TODO vérifier si newPVEnnemi peut-être en dessous de 0 ou non
-            int newPVEnnemi = ennemi.getPV() - pvVoles;
+            // Vérifier que newPVEnnemi n'est pas < 0
+            int newPVEnnemi = this.ennemi.returnNewPV(pvVoles, this.ennemi);
+            // Vérifier que newPVVoleur n'est pas > PVMax
             int newPVVoleur = this.voleur.returnNewPVSupp(pvVoles, this.voleur);
             ennemi.setPV(newPVEnnemi);
             this.voleur.setPV(newPVVoleur);
@@ -28,7 +29,13 @@ public class CapaciteVoleur implements Capacite {
                     + " (" + newPVEnnemi + "/" + ennemi.getPVMax() + "PV)");
             System.out.println(this.voleur.getNom() + " (" + newPVVoleur + "/" + this.voleur.getPVMax() + "PV)");
         }
+        else {
+            System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+        }
+    }
 
-        System.out.println("Vous n'avez pas assez d'énergie pour utiliser votre capacité spéciale.");
+    @Override
+    public String getDescription() {
+        return "A qui souhaitez-vous voler des PV ? (Vol: 20% des PV de la cible)";
     }
 }
