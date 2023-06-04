@@ -31,6 +31,10 @@ public class Personnages implements Iterable<Personnage> {
         return this.personnages.isEmpty();
     }
 
+    public void clear() {
+        this.personnages.clear();
+    }
+
     /**
      * Permet de boucler sur la liste de cette classe avec un foreach
      */

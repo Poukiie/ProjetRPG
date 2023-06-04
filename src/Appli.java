@@ -3,6 +3,9 @@ import partie.Partie;
 import personnages.heros.*;
 import personnages.*;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Appli {
@@ -11,6 +14,13 @@ public class Appli {
         String input;
         Personnages personnages = new Personnages();
         Personnages allies = new Personnages();
+        List<Donjon> donjons = new ArrayList<>();
+        Donjon d1 = new Donjon("Le donjon facile", 1);
+        Donjon d2 = new Donjon("Le second donjon", 2);
+        Donjon d3 = new Donjon("Le donjon final", 3);
+        donjons.add(d1);
+        donjons.add(d2);
+        donjons.add(d3);
         boolean continuerJeu = true;
 
         // Afficher le menu en boucle tant que le joueur ne quitte pas
@@ -32,13 +42,24 @@ public class Appli {
                         System.out.println("Ça va être compliqué sans personnage... Créez-en un d'abord !\n" + "--------");
                         break;
                     }
-                    // Afficher le menu de choix du donjon
-                    Donjon donjonChoisi = showDonjons(sc);
-                    // Choix de l'équipe de 3 personnages pour le donjon
-                    choisirEquipe(personnages, allies, sc);
-                    // Lancer la partie
-                    Partie partie = new Partie(allies, donjonChoisi);
-                    partie.jouer();
+                    // Tant que tous les donjons ne sont pas faits
+                    // Iterator sur donjons pour boucler dessus
+                    Iterator<Donjon> iterator = donjons.iterator();
+                    while(iterator.hasNext()) {
+                        Donjon d = iterator.next();
+                        // Afficher le menu de choix du donjon
+                        Donjon donjonChoisi = showDonjons(sc, donjons);
+                        // Choix de l'équipe de 3 personnages pour le donjon
+                        choisirEquipe(personnages, allies, sc);
+                        // Lancer la partie
+                        Partie partie = new Partie(allies, donjonChoisi);
+                        partie.jouer();
+                        // Réinitialiser l'équipe
+                        allies.clear();
+                        // Supprimer le donjon fini de la liste
+                        donjons.remove(d);
+                    }
+
                     break;
 
                 // 3. Voir mes personnages (compteur, nom - classe)
@@ -109,16 +130,13 @@ public class Appli {
     /**
      * Affiche le menu pour choisir le donjon
      */
-    private static Donjon showDonjons(Scanner sc) {
-        Donjon d1 = new Donjon("Le donjon facile", 1);
-        Donjon d2 = new Donjon("Le second donjon", 2);
-        Donjon d3 = new Donjon("Le donjon final", 3);
+    private static Donjon showDonjons(Scanner sc, List<Donjon> donjons) {
+        StringBuilder listeDonjons = new StringBuilder("Choisissez un donjon :\n");
+        for (Donjon donjon : donjons) {
+            listeDonjons.append(donjon.getNumDonjon()).append(". ").append(donjon.getNomDonjon()).append("\n");
+        }
+        listeDonjons.append("> ");
 
-        String listeDonjons = "Choisissez un donjon :\n"
-                + "1. " + d1.getNomDonjon() + "\n"
-                + "2. " + d2.getNomDonjon() + "\n"
-                + "3. " + d3.getNomDonjon() + "\n"
-                + "> ";
         System.out.print(listeDonjons);
         String donjonChoisi = sc.nextLine();
 
@@ -128,12 +146,8 @@ public class Appli {
         }
 
         // Stocker le donjon choisi dans une variable
-        Donjon donjon = null;
-        switch(donjonChoisi) {
-            case "1": donjon = d1; break;
-            case "2": donjon = d2; break;
-            case "3": donjon = d3; break;
-        }
+        int indexChoisi = Integer.parseInt(donjonChoisi) - 1;
+        Donjon donjon = donjons.get(indexChoisi);
         return donjon;
     }
 

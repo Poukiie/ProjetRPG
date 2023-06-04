@@ -24,16 +24,19 @@ public class Partie {
         this.allies = allies;
         this.donjon = donjon;
         this.salles = donjon.getSalles();
-        this.salleActuelle = 1;
+        this.salleActuelle = 0;
     }
 
     public void jouer() throws InterruptedException {
         while (!donjon.isCompleted(salleActuelle)) {
-            System.out.println("-------- Salle " + salleActuelle + " --------");
-            this.ennemis = salles.get(salleActuelle - 1).getEnnemis();
+            System.out.println("-------- Salle " + (salleActuelle + 1) + " --------");
+            if (salleActuelle == 2) {
+                System.out.println("Vous allez affronter le boss du donjon...");
+            }
+            this.ennemis = salles.get(salleActuelle).getEnnemis();
 
             // Tant que l'équipe n'est pas morte et que la salle n'est pas terminée
-            while ((!allies.isEmpty()) && (!salles.get(salleActuelle - 1).isCompleted())) {
+            while ((!allies.isEmpty()) && (!salles.get(salleActuelle).isCompleted())) {
                 // Tant que l'équipe n'a pas tué tous les ennemis
                  alliesAttaquent();
                  Thread.sleep(2000);
@@ -43,10 +46,14 @@ public class Partie {
                 }
             }
 
-            System.out.println(">>> Victoire ! Salle " + salleActuelle + " terminée ! <<<\n");
-            salleActuelle++;
+            System.out.println(">>> Victoire ! Salle " + (salleActuelle + 1) + " terminée ! <<<\n");
+            if (salleActuelle < 2) {
+                salleActuelle++;
+            }
+
             // TODO Gérer les récompenses
         }
+        System.out.println(">>> Donjon terminé ! <<<");
     }
 
     private void alliesAttaquent() {
@@ -149,6 +156,18 @@ public class Partie {
             // Attaque normale
             else {
                 ennemi.attaquer(cible);
+            }
+
+            Iterator<Personnage> iterator = allies.iterator();
+            // Boucler sur les allies tant qu'il y en a encore
+            while (iterator.hasNext()) {
+                Personnage allie = iterator.next();
+                // Et les supprimer de la liste s'ils sont morts
+                if (allie.estMort()) {
+                    System.out.println(">>> " + allie.getNom() + " est éliminé :(\n--------");
+                    iterator.remove();
+                    alliesMorts.add(allie);
+                }
             }
 
             for (Personnage p : allies) {
